@@ -8,6 +8,10 @@
     <link rel="canonical" href="https://the-perfect-date.example.com/">
     <meta name="theme-color" content="#0f172a">
 
+    <!-- PWA Manifest & Icons -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Perfect Date - Directorio Premium de planes en Madrid">
@@ -44,7 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <!-- Favicon -->
-    <link rel="icon" href="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=64&q=80">
+    <link rel="icon" type="image/png" href="/icons/icon-192x192.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
@@ -159,6 +163,17 @@
 </head>
 <body>
     <div id="root"></div>
+
+    <script>
+        // PWA Service Worker Registration
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/pwabuilder-sw.js")
+                    .then(reg => console.log("Service worker registered.", reg))
+                    .catch(err => console.log("Service worker registration failed: ", err));
+            });
+        }
+    </script>
 
     <script type="text/babel">
         const { useState, useEffect, useMemo, useRef, useCallback } = React;
