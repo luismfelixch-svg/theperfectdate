@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Perfect Date - Directorio Premium de planes en Madrid</title>
+    <meta name="description" content="Descubre y guarda los mejores planes románticos y divertidos en Madrid: restaurantes, terrazas, cultura, noche y aire libre en un solo directorio premium.">
+    <link rel="canonical" href="https://the-perfect-date.example.com/">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Perfect Date - Directorio Premium de planes en Madrid">
+    <meta property="og:description" content="Encuentra la cita perfecta en Madrid según tu mood: romántico, divertido, relax o exclusivo.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Perfect Date - Directorio Premium de planes en Madrid">
+    <meta name="twitter:description" content="Inspírate con planes únicos para tu próxima cita en Madrid.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Optimización de Carga de Imágenes -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://api.dicebear.com">
+    <!-- Performance Hints -->
+    <link rel="prefetch" href="https://unpkg.com/react@18/umd/react.production.min.js">
+    <link rel="prefetch" href="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js">
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=64&q=80">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; -webkit-tap-highlight-color: transparent; transition: background-color 0.3s, color 0.3s; }
+        body.dark { background-color: #0F172A; color: #f8fafc; }
+        
+        .font-serif { font-family: 'Merriweather', serif; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .card-hover:active { transform: scale(0.98); }
+        
+        /* Improved Glassmorphism Navigation */
+        .floating-nav { 
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+        }
+        .dark .floating-nav {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+        }
+        
+        .skeleton { background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        .dark .skeleton { background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%); }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        
+        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .scale-in { animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .badge-premium { background: linear-gradient(135deg, #fbbf24, #d97706); color: white; box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4); }
+        .badge-new { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); animation: pulse-soft 3s infinite; }
+        
+        @keyframes pulse-soft { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
+
+        .tag-pill { @apply px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wide border transition-colors duration-200; }
+
+        /* Map Styles */
+        .map-container { position: relative; width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%); border-radius: 2.5rem; overflow: hidden; box-shadow: inset 0 2px 8px rgba(0,0,0,0.08); }
+        .dark .map-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); box-shadow: inset 0 2px 8px rgba(0,0,0,0.3); }
+        .map-pin { position: absolute; transform: translate(-50%, -50%); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; will-change: transform; }
+        .map-pin:hover { z-index: 50; transform: translate(-50%, -65%) scale(1.25); }
+        .pulse-ring { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid currentColor; opacity: 0; animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+        @keyframes pulse-ring { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+        
+        /* Map Pin Animations */
+        @keyframes pin-enter { 
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-180deg); } 
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); } 
+        }
+        @keyframes pin-bounce { 
+            0%, 100% { transform: translate(-50%, -50%) scale(1); } 
+            50% { transform: translate(-50%, -55%) scale(1.1); } 
+        }
+        .map-pin-animate { animation: pin-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .map-pin.selected { animation: pin-bounce 0.6s ease-in-out; }
+
+        .progressive-load {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.5); border-radius: 20px; }
+
+        /* Respeto a usuarios con reducción de movimiento */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { pink: '#ec4899', purple: '#8b5cf6', dark: '#0f172a' }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useRef, useCallback } = React;
+
+        // ==========================================
+        // 1. DATA & CONSTANTS
+        // ==========================================
+        
+        const MOCK_REVIEWS = [
+            { user: "Ana García", avatar: "Ana", rating: 5, comment: "¡Simplemente mágico! El ambiente es perfecto para una primera cita.", date: "Hace 2 días" },
+            { user: "Marcos P.", avatar: "Marcos", rating: 4, comment: "La comida excelente, aunque un poco ruidoso el fin de semana.", date: "Hace 1 semana" },
+            { user: "Lucía R.", avatar: "Lucia", rating: 5, comment: "El mejor sitio de Madrid. Volveremos seguro.", date: "Hace 3 semanas" }
+        ];
+
+        const SHOP_PRODUCTS = [
+            { id: 1, name: "Juego 'Conexión Profunda'", price: "24.99€", image: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=800&q=80", description: "100 cartas con preguntas para redescubrir a tu pareja.", tag: "Bestseller", store: "Amazon", url: "https://www.amazon.es/s?k=juego+cartas+pareja" },
+            { id: 2, name: "Kit Masaje Sensual", price: "39.95€", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", description: "Aceites esenciales, velas aromáticas y guía paso a paso.", tag: "Relax", store: "Natura", url: "https://www.google.com/search?q=kit+masaje+pareja&tbm=shop" },
+            { id: 3, name: "Cámara Instantánea Retro", price: "89.00€", image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80", description: "Captura vuestros momentos más especiales al instante.", tag: "Tech", store: "Fnac", url: "https://www.fnac.es/s26/Camaras-Instantaneas" },
+            { id: 4, name: "Libro de Retos en Pareja", price: "19.50€", image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80", description: "50 aventuras para salir de la rutina y divertirse.", tag: "Diversión", store: "Casa del Libro", url: "https://www.casadellibro.com/libros/retos-pareja" },
+            { id: 5, name: "Cesta Picnic Premium", price: "55.00€", image: "https://images.unsplash.com/photo-1560706834-a78d055a43b2?auto=format&fit=crop&w=800&q=80", description: "Todo lo necesario para una cita perfecta al aire libre.", tag: "Outdoor", store: "Amazon", url: "https://www.amazon.es/s?k=cesta+picnic" },
+            { id: 6, name: "Vale 'Escapada Sorpresa'", price: "149.00€", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80", description: "Una noche de hotel + cena en un destino secreto a menos de 2h.", tag: "Regalo Top", store: "Waynabox", url: "https://waynabox.com/" },
+            { id: 7, name: "Proyector Portátil Mini", price: "65.00€", image: "https://images.unsplash.com/photo-1517604931442-710536443883?auto=format&fit=crop&w=800&q=80", description: "Cine bajo las estrellas o en el salón de casa. Conexión móvil.", tag: "Cine", store: "Amazon", url: "https://www.amazon.es/s?k=proyector+mini" },
+            { id: 8, name: "Curso Cocina para Dos", price: "75.00€", image: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?auto=format&fit=crop&w=800&q=80", description: "Aprended a cocinar sushi o pasta fresca juntos. Experiencia presencial.", tag: "Experiencia", store: "Fever", url: "https://feverup.com/madrid" },
+            { id: 9, name: "Mapa Estelar Personalizado", price: "29.95€", image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&q=80", description: "Cómo estaban las estrellas el día que os conocisteis.", tag: "Romántico", store: "Etsy", url: "https://www.etsy.com/es/search?q=mapa+estelar" },
+            { id: 10, name: "Pack Velas Aromáticas 'Noche Lenta'", price: "18.00€", image: "https://images.unsplash.com/photo-1511910849309-0dffb8785145?auto=format&fit=crop&w=800&q=80", description: "Tres velas con aromas suaves para crear ambiente en casa.", tag: "Ambiente", store: "Amazon", url: "https://www.amazon.es/s?k=velas+aromaticas+romanticas" },
+            { id: 11, name: "Juego de Fondue para Dos", price: "32.00€", image: "https://images.unsplash.com/photo-1604908176997-1251884b08a3?auto=format&fit=crop&w=800&q=80", description: "Perfecto para una noche de queso o chocolate y conversación.", tag: "Foodie", store: "Ikea", url: "https://www.ikea.com/es/es/search/?q=fondue" },
+            { id: 12, name: "Kit 'Noche de Spa en Casa'", price: "42.00€", image: "https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=800&q=80", description: "Mascarillas, sales de baño y música relajante incluida en una playlist.", tag: "Self-care", store: "Sephora", url: "https://www.sephora.es" }
+        ];
+
+        const BLOG_POSTS = [
+            { id: 1, title: "Los 5 Restaurantes Más Románticos de Madrid para una Primera Cita", excerpt: "¿Buscas impresionar sin que parezca que te has esforzado demasiado? Descubre nuestra selección.", image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80", author: "Elena M.", date: "12 Oct 2023", readTime: "5 min", content: `<p>Madrid está llena de rincones mágicos, pero elegir el lugar perfecto para una primera cita puede ser abrumador.</p><h3>1. El Jardín Secreto</h3><p>Escondido en pleno centro, este oasis urbano es perfecto para romper el hielo.</p><h3>2. Bel Mondo</h3><p>Si quieres apostar por lo seguro y espectacular, el italiano de moda no falla.</p>` },
+            { id: 2, title: "Planes Originales: Más allá de la Cena y el Cine", excerpt: "Rompe con la rutina. Desde lanzamiento de hachas hasta pintura con vino neón.", image: "https://images.unsplash.com/photo-1572061486001-5231c50549c4?auto=format&fit=crop&w=800&q=80", author: "Carlos R.", date: "05 Nov 2023", readTime: "4 min", content: `<p>La clásica combinación de "cena y cine" es un pilar de las citas por una razón: funciona. Pero a veces, necesitas sacudir las cosas.</p><h3>Lanzamiento de Hachas</h3><p>¿Suena peligroso? Es increíblemente terapéutico y divertido.</p>` },
+            { id: 3, title: "Ruta de los Mejores Atardeceres de Madrid", excerpt: "Desde el Templo de Debod hasta las 7 Tetas. Dónde ver caer el sol con la mejor compañía.", image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80", author: "Sofía L.", date: "20 Nov 2023", readTime: "6 min", content: `<p>Madrid tiene uno de los cielos más bonitos de Europa. Aquí tienes los spots imprescindibles.</p><h3>Templo de Debod</h3><p>Un clásico que nunca falla. La luz reflejada en el agua es mágica.</p><h3>Cerro del Tío Pío</h3><p>Para unas vistas panorámicas de toda la ciudad, ideal para un picnic al atardecer.</p>` },
+            { id: 4, title: "Citas de Invierno: Dónde refugiarse del frío", excerpt: "Cafeterías con encanto, museos desconocidos y planes acogedores para los días grises.", image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=80", author: "Marc G.", date: "02 Dic 2023", readTime: "4 min", content: `<p>Que el frío no os pare. Madrid en invierno tiene un encanto especial si sabes dónde ir.</p><h3>Salón des Fleurs</h3><p>Una floristería que también es cafetería. Tarta de zanahoria y té caliente rodeados de plantas.</p><h3>Cine Doré</h3><p>Refúgiate en la filmoteca y disfruta de una película clásica en un entorno precioso.</p>` },
+            { id: 5, title: "Guía de Vinos para Impresionar (Sin saber mucho)", excerpt: "Bares de vinos naturales y bodegas con historia donde pedir será fácil y quedarás genial.", image: "https://images.unsplash.com/photo-1510812431409-9290b7716b6e?auto=format&fit=crop&w=800&q=80", author: "Lucía P.", date: "15 Dic 2023", readTime: "5 min", content: `<p>El vino está de moda en Madrid. Olvídate de los sitios estirados, lo que se lleva son los bares de vinos naturales y el copeo desenfadado.</p><h3>Gota Wine</h3><p>Vinos naturales, vinilos y un ambiente muy cool en Delicias.</p><h3>La Fisna</h3><p>En Lavapiés, un lugar sin pretensiones donde te recomendarán genial según tus gustos.</p>` },
+            { id: 6, title: "Citas Low-Cost que se sienten de Lujo", excerpt: "Ideas para disfrutar a tope sin que lo note tu cartera.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80", author: "Equipo The Perfect Date", date: "10 Ene 2024", readTime: "4 min", content: `<p>No hace falta gastar mucho para crear recuerdos potentes. Madrid está llena de rincones gratuitos o muy baratos.</p><h3>Paseo al atardecer</h3><p>Templo de Debod, Dalieda de San Francisco o las 7 Tetas. Lleva algo de picoteo y una manta.</p><h3>Rutas a pie</h3><p>Explorad barrios nuevos sin rumbo fijo: empezad en una estación de metro y dejad que las fachadas os guíen.</p>` },
+        ];
+
+        const BADGES = [
+            { id: 1, name: "Primeros Pasos", icon: "🌱", desc: "Has guardado tu primer plan", unlocked: true },
+            { id: 2, name: "Foodie", icon: "🍔", desc: "5 restaurantes guardados", unlocked: true },
+            { id: 3, name: "Aventurero", icon: "🏕️", desc: "3 planes al aire libre completados", unlocked: false },
+            { id: 4, name: "Night Owl", icon: "🦉", desc: "Explorador de la noche madrileña", unlocked: false },
+            { id: 5, name: "Culture Vulture", icon: "🎨", desc: "Amante de los museos y teatros", unlocked: false },
+            { id: 6, name: "Romántico", icon: "❤️", desc: "Experto en citas íntimas", unlocked: true }
+        ];
+
+        const TRENDING_HOODS = [
+            { name: "Malasaña", image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=400&q=80", tag: "Moderno" },
+            { name: "Salamanca", image: "https://images.unsplash.com/photo-1577383184346-63d159040974?auto=format&fit=crop&w=400&q=80", tag: "Lujo" },
+            { name: "La Latina", image: "https://images.unsplash.com/photo-1566939597232-a589255a2979?auto=format&fit=crop&w=400&q=80", tag: "Cañas" },
+            { name: "Chamberí", image: "https://images.unsplash.com/photo-1570698471844-0cde4271842e?auto=format&fit=crop&w=400&q=80", tag: "Gastro" }
+        ];
+
+        const rawCSV = `ID,Nombre Creativo,Lugar Real,Precio,Categoria,Barrio,Direccion,Vibe,Momento,URL
+1,Cena en la Selva,Amazónico,€€€€,Gastronomía,Salamanca,C/ Jorge Juan 20,Exótico,Noche,restauranteamazonico.com
+2,La Playa de Madrid,Ojalá,€€,Gastronomía,Malasaña,C/ San Andrés 1,Relax,Brunch/Cena,grupolamusa.com
+3,Sushi en el Búnker,Yugo The Bunker,€€€€,Gastronomía,Letras,C/ San Blas 4,Exclusivo,Noche,yugothebunker.com
+4,Pizza & Jazz,Bel Mondo,€€€,Gastronomía,Salamanca,C/ Velázquez 39,Romántico,Noche,bigmammagroup.com
+5,El Invernadero Secreto,El Jardín de Arzábal,€€€,Gastronomía,Atocha,C/ Santa Isabel 52,Íntimo,Tarde/Noche,arzabal.com
+6,Tapas de Autor,Juana La Loca,€€,Gastronomía,La Latina,Pza. Puerta de Moros 4,Casual,Noche,juanalalocamadrid.com
+7,Cena Clandestina,Bodega de los Secretos,€€€,Gastronomía,Letras,C/ San Blas 4,Misterio,Noche,bodegadelossecretos.com
+8,El Vagón de Oriente,Vagón de Beni,€€€,Gastronomía,Hoyo de Manz.,C/ San Macario 6,Vintage,Comida,elvagondebeni.es
+9,Ramen Picante,Chuka Ramen Bar,€€,Gastronomía,Letras,C/ Echegaray 9,Foodie,Noche,chukaramenbar.com
+10,Alta Cocina Canalla,StreetXO,€€€,Gastronomía,Salamanca,C/ Serrano 52,Intenso,Noche,streetxo.com
+11,Brunch de Reyes,Café Comercial,€€,Gastronomía,Malasaña,Gta. Bilbao 7,Clásico,Mañana,cafecomercialmadrid.com
+12,Tacos y Margaritas,Tiki Taco,€,Gastronomía,Centro,C/ San Bernardo 12,Divertido,Noche,tikitaco.es
+13,Vistas 360º,Azotea del Círculo,€€€,Gastronomía,Centro,C/ Alcalá 42,Wow,Atardecer,azoteadelcirculo.com
+14,Mercado Gourmet,Mercado de San Miguel,€€,Gastronomía,Centro,Pza. San Miguel,Bullicioso,Aperitivo,mercadodesanmiguel.es
+15,Pasión Turca,Pera Limonera,€€,Gastronomía,Chamberí,C/ Magallanes 32,Colorido,Tardeo,peralimonera.com
+16,Croquetas y Champán,Santerra Neotaberna,€€,Gastronomía,Salamanca,C/ General Pardiñas 56,Castizo,Noche,santerra.es
+17,Fondue Suiza,La Fondue de Tell,€€,Gastronomía,Malasaña,C/ Divino Pastor 12,Acogedor,Invierno,lafonduedetell.com
+18,Cena Espectáculo,Wah Madrid,€€€€,Gastronomía,IFEMA,Av. Partenón 5,Show,Noche,wahshow.com
+19,Vegano Chic,Mudrá,€€€,Gastronomía,Salamanca,C/ Recoletos 13,Saludable,Comida,mudramadrid.com
+20,El Rey del Cachopo,Urumea,€€,Gastronomía,Chamartín,C/ Cochabamba 7,Tradicional,Comida,asadorurumea.com
+21,Fuego y Brasa,Rocacho,€€€€,Gastronomía,Chamartín,C/ Padre Damián 38,Elegante,Noche,rocacho.com
+22,Pasta Fresca Real,Pellico 5 (Omeraki),€€€,Gastronomía,Chamberí,C/ Duque de Sesto 48,Gourmet,Noche,omerakirestaurante.com
+23,Merienda de Alicia,Salon des Fleurs,€€,Gastronomía,Chamberí,C/ Guzmán el Bueno 106,Cute,Tarde,salondesfleurs.es
+24,Cena Marroquí,Al-Mounia,€€€,Gastronomía,Centro,C/ Recoletos 5,Exótico,Noche,almounia.es
+25,Hamburguesa Top,Hundred Burgers,€,Gastronomía,Varios,C/ Eloy Gonzalo 12,Casual,Noche,hundredburgers.com
+26,Mariscos y Vinos,O'Culto,€€€,Gastronomía,Retiro,C/ Menorca 4,Delicatessen,Noche,ocultomadrid.com
+27,Tardeo Pijo,Ramsés,€€€€,Gastronomía,Salamanca,Pza. Independencia 4,Postureo,Tarde/Noche,ramseslife.com
+28,Chocolate con Churros,San Ginés,€,Gastronomía,Centro,Pasadizo San Ginés 5,Histórico,Madrugada,chocolateriasangines.com
+29,Comida Coreana,Luke,€€€,Gastronomía,Salesas,C/ Bárbara de Braganza 2,Fusión,Noche,lukerestaurante.com
+30,El Rincón Cubano,Zara,€,Gastronomía,Chueca,C/ Infantas 5,Tropical,Noche,restaurantezara.com
+31,Cócteles Alquimistas,Salmon Guru,€€€,Noche,Letras,C/ Echegaray 21,Loco,Noche,salmonguru.es
+32,Jazz en Vivo,Café Central,€€,Noche,Letras,Pza. del Ángel 10,Classy,Noche,cafecentralmadrid.com
+33,Speakeasy Secreto,Medias Puri,€€€,Noche,Tirso Molina,Pza. Tirso de Molina 1,Fiesta,Madrugada,mediaspuri.com
+34,Vistas al Palacio,Terraza Sabatini,€€,Noche,Palacio,Ctra. San Vicente 16,Romántico,Noche,apartosuitesjardinesdesabatini.com
+35,Rock & Roll,Thundercat Club,€,Noche,Malasaña,C/ Campoamor 11,Canalla,Madrugada,thundercatclub.com
+36,Piano Bar,Toni 2,€€,Noche,Chueca,C/ Almirante 9,Kitsch,Madrugada,toni2.es
+37,El Cielo de Madrid,RIU Plaza España,€€,Noche,Centro,C/ Gran Vía 84,Turístico,Atardecer,riu.com
+38,Vermut Castizo,La Hora del Vermut,€,Noche,Retiro,C/ Fernán González 48,Tradición,Mediodía,lahoradelvermut.com
+39,Vinos y Vinilos,Gota Wine,€€,Noche,Delicias,C/ Prim 5,Moderno,Tarde,gotawine.es
+40,Club de Comedia,La Chocita del Loro,€€,Noche,Gran Vía,Gran Vía 70,Risas,Noche,lachocitadelloro.com
+41,Tiki Bar,Bora Bora,€€,Noche,Argüelles,C/ Ventura Rodríguez 5,Hawaii,Noche,boraboramadrid.com
+42,Copas en un Museo,NuBel,€€,Noche,Atocha,C/ Argumosa 43,Cool,Noche,nubel.es
+43,Karaoke Privado,BAM Karaoke Box,€€,Noche,Recoletos,C/ Recoletos 23,Divertido,Noche,bam-karaokebox.com
+44,Cerveza Artesana,Fábrica Maravillas,€,Noche,Malasaña,C/ Valverde 29,Craft,Tarde,fabricamaravillas.com
+45,Mezcaleria,La Llorona,€€,Noche,Malasaña,C/ San Andrés 31,Picante,Noche,lalloronatacos.com
+46,Discoteca Selecta,Graf,€€€,Noche,Salamanca,C/ María de Molina 50,Pijo,Madrugada,discotecagraf.com
+47,Café Literario,Café Gijón,€€,Noche,Recoletos,P.º de Recoletos 21,Intelectual,Tarde,cafegijon.com
+48,Terraza Chill Out,Doña Luz,€€,Noche,Sol,C/ Montera 10,Luz,Atardecer,donaluzmadrid.com
+49,Cueva de Flamenco,Cardamomo,€€€,Noche,Letras,C/ Echegaray 15,Pasión,Noche,cardamomo.com
+50,Bar de Cereales,Cereal Hunters,€,Noche,Chueca,C/ Mejía Lequerica 14,Nostalgia,Tarde,cerealhunterscafe.com
+51,Museo de Ilusiones,Museum of Illusions,€€,Cultura,Lavapiés,C/ Dr. Cortezo 8,Interactivo,Tarde,museumofillusions.es
+52,Cine Doré,Filmoteca Española,€,Cultura,Lavapiés,C/ Santa Isabel 3,Vintage,Tarde,culturaydeporte.gob.es
+53,Arte Inmersivo,Nomad Museo,€€,Cultura,Gran Vía,C/ Gran Vía 78,Visual,Todo el día,nomadart.es
+54,Teatro Musical,Teatro Lope de Vega,€€€,Cultura,Gran Vía,Gran Vía 57,Rey León,Noche,stage.es
+55,Realidad Virtual,Zero Latency,€€,Cultura,Delicias,C/ Primitivo Gañán 12,Gamer,Tarde,zerolatencyvr.es
+56,Taller de Cerámica,Lumbre y Barro,€€,Cultura,Varios,C/ Gaztambide 24,Creativo,Mañana,lumbreybarro.com
+57,Pintar y Vino,Wine Gogh,€€,Cultura,Varios,C/ Narciso Serra 15,Arte+Vino,Tarde,winegogh.es
+58,Microteatro,Microteatro por Dinero,€,Cultura,Malasaña,C/ Loreto y Chicote 9,Íntimo,Noche,microteatro.es
+59,Museo Sorolla,Museo Sorolla,€,Cultura,Chamberí,P.º Gral. Martínez Campos,Luminoso,Mañana,culturaydeporte.gob.es
+60,Clase de Cocina,A Punto,€€,Cultura,Chueca,C/ Hortaleza 64,Cooking,Tarde,apuntolibreria.com
+61,Lanzar Hachas,El Hachazo,€€,Cultura,Cuatro C.,C/ Hernani 26,Descarga,Tarde,elhachazo.com
+62,Escalada Indoor,Sharma Climbing,€€,Cultura,Canillejas,C/ Julián Camarillo 55,Deporte,Tarde,sharmaclimbingmadrid.com
+63,Bolera Vintage,Bowling Chamartín,€,Cultura,Chamartín,Estación Chamartín,Retro,Noche,bowlingchamartin.com
+64,Escape Room Miedo,El Orfanato,€€,Cultura,Ventas,Pza. de la Reverencia,Terror,Noche,elorfanato.com
+65,Ópera Real,Teatro Real,€€€€,Cultura,Ópera,Pza. de Isabel II,Lujo,Noche,teatroreal.es
+66,Exposición Foto,Fundación Mapfre,€,Cultura,Recoletos,P.º de Recoletos 23,Cultural,Tarde,fundacionmapfre.org
+67,Magia de Cerca,La Cripta Mágica,€€,Cultura,Palos Frontera,C/ Tarragona 15,Magia,Noche,lacriptamagica.es
+68,Cata de Perfumes,Barfume,€€,Cultura,Chueca,C/ Santa Teresa 3,Sensorial,Tarde,barfume.com
+69,Spa Urbano,Hammam Al Ándalus,€€€,Cultura,Centro,C/ Atocha 14,Relax,Noche,madrid.hammamalandalus.com
+70,Túnel de Viento,WINDOBONA,€€€,Cultura,Carabanchel,C/ Calderilla 16,Adrenalina,Mañana,windobona.es
+71,Visita Fantasmas,Madrid Misterioso,€,Cultura,Centro,Pza. Mayor,Tour,Noche,civitatis.com
+72,Librería Antigua,Bardón,€,Cultura,Sol,Pza. San Martín 3,Historia,Tarde,libreriabardon.com
+73,Karting Carlos Sainz,Carlos Sainz Karting,€€,Cultura,Latina,C/ Sepúlveda 3,Velocidad,Tarde,kartcsainz.com
+74,Parque de Bolas Adultos,Perroloco Food&Drinks,€,Cultura,Varios,C/ Las Eras 4,Infantil,Tarde,perrolocofoodanddrinks.com
+75,Autocine,Autocine Madrid,€€,Cultura,Fuencarral,C/ Isla de Java 2,Grease,Noche,autocines.com
+76,Barcas del Retiro,Estanque del Retiro,€,Aire Libre,Retiro,Parque del Retiro,Clásico,Mañana,esmadrid.com
+77,Atardecer Egipcio,Templo de Debod,Gratis,Aire Libre,Moncloa,C/ Ferraz 1,Mágico,Atardecer,madrid.es
+78,Teleférico,Teleférico de Madrid,€,Aire Libre,Rosales,P.º del Pintor Rosales,Vistas,Tarde,telefericomadrid.com
+79,Bosque Encantado,El Capricho,Gratis,Aire Libre,Barajas,P.º de la Alameda de Osuna,Naturaleza,Mañana,madrid.es
+80,Almendros en Flor,Quinta de los Molinos,Gratis,Aire Libre,San Blas,C/ Alcalá 527,Foto,Primavera,madrid.es
+81,Senderismo,La Pedriza,Gratis,Aire Libre,Manzanares,Sierra de Guadarrama,Montaña,Día,parquenacionalsierraguadarrama.es
+82,Picnic Real,Madrid Río,Gratis,Aire Libre,Arganzuela,Madrid Río,Picnic,Mediodía,madrid.es
+83,Rosaleda Secreta,La Rosaleda,Gratis,Aire Libre,Moncloa,C/ Rosaleda 1,Romántico,Primavera,madrid.es
+84,Kayak en el Tajo,Aranjuez,€€,Aire Libre,Aranjuez,Club de Piragüismo,Aventura,Mañana,aranjuez.es
+85,Jardín Botánico,Real Jardín Botánico,€,Aire Libre,Prado,Pza. de Murillo 2,Flora,Tarde,rjb.csic.es
+86,Parque 7 Tetas,Cerro del Tío Pío,Gratis,Aire Libre,Vallecas,C/ Benjamín Palencia 1,Vistas,Atardecer,madrid.es
+87,Tirolinas,Aventura Amazonia,€€,Aire Libre,Cercedilla,Ctra. Fuenfría,Tarzán,Mañana,aventura-amazonia.com
+88,Paseo a Caballo,Hípica La Colina,€€,Aire Libre,Mirasierra,C/ Peña del Águila,Animales,Mañana,hipicalacolina.com
+89,Laberinto,Parque Europa,Gratis,Aire Libre,Torrejón,P.º de los Cipreses,Viaje,Tarde,parqueeuropa.es
+90,Tren de la Fresa,Tren de la Fresa,€€,Aire Libre,Delicias,Museo del Ferrocarril,Histórico,Mañana,trendelafresa.es
+91,Safari Madrid,Safari Madrid,€€,Aire Libre,Aldea Fresno,Ctra. Navalcarnero,Salvaje,Día,safarimadrid.com
+92,Patinaje Hielo,Pista de Hielo Colón,€,Aire Libre,Colón,Pza. de Colón,Navidad,Invierno,pistadehielocolon.es
+93,Piscinas Naturales,Las Presillas,€,Aire Libre,Rascafría,Valle del Paular,Verano,Día,rascafria.org
+94,Globo Aerostático,Aerotours,€€€€,Aire Libre,Guadarrama,Parque Regional,Sueño,Amanecer,aerotours.com
+95,Golf para Novatos,Green Canal Golf,€€,Aire Libre,Chamberí,Av. de Filipinas 54,Deporte,Tarde,greencanalgolf.com
+96,Cine de Verano,Fescinal,€,Aire Libre,Bombilla,Parque de la Bombilla,Cine,Noche,fescinal.es
+97,Jardín Tropical,Estación de Atocha,Gratis,Aire Libre,Atocha,Estación Atocha,Curioso,Paso,adif.es
+98,Ruta Fantasmas,Cementerio Almudena,€,Aire Libre,Ciudad Lineal,Av. de Daroca 90,Dark,Noche,visitaspatrimonio.madrid.es
+99,Bici Eléctrica,BiciMAD (Ruta),€,Aire Libre,Centro,Pza. España - Retiro,Urbano,Tarde,bicimad.com
+100,Atardecer Secreto,Dalieda S. Francisco,Gratis,Aire Libre,La Latina,Av. Gran Vía S. Fco.,Puesta Sol,Atardecer,madrid.es
+101,Brunch con Vinilos,Cafe Comercial,€€,Gastronomía,Malasaña,Gta. Bilbao 7,Clásico,Brunch,cafecomercialmadrid.com
+102,Atardecer en Azotea,RIU Plaza España,€€,Noche,Centro,C/ Gran Vía 84,Vistas,Atardecer,riu.com
+103,Picnic al Río,Madrid Río,Gratis,Aire Libre,Arganzuela,Parque Madrid Río,Chill,Tarde,madrid.es
+104,Domingo de Museos,Triángulo del Arte,€,Cultura,Prado,Paseo del Prado,Cultural,Mañana,esmadrid.com
+105,Noche de Jazz,Café Central,€€,Noche,Letras,Pza. del Ángel 10,Íntimo,Noche,cafecentralmadrid.com
+106,Brunch Secreto,Federal Café,€€,Gastronomía,Conde Duque,Pza. de las Comendadoras 9,Moderno,Mañana,federalcafe.es
+107,Cocina de Mercado,Sala de Despiece,€€€,Gastronomía,Chamberí,C/ de Ponzano 11,Intenso,Noche,saladedespiece.com
+108,Helado Artesano,Mistura,€,Gastronomía,Varios,C/ Augusto Figueroa 5,Casual,Tarde,misturaicecream.com
+109,Fiesta en el Teatro,Teatro Eslava,€€€,Noche,Sol,C/ del Arenal 11,Fiesta,Madrugada,teatroeslava.com
+110,Bar de Hielo,Ice Bar Madrid,€€,Noche,Centro,C/ del Conde de Romanones 3,Curioso,Noche,icebarmadrid.com
+111,Museo del Romanticismo,Museo Nacional del Romanticismo,€,Cultura,Chueca,C/ San Mateo 13,Histórico,Mañana,culturaydeporte.gob.es
+112,Taller de Fotografía,La Cámara Lúcida,€€,Cultura,Malasaña,C/ de la Palma 19,Creativo,Tarde,lacamaralucida.com
+113,Ruta en Segway,Parque del Retiro,€€,Aire Libre,Retiro,Parque del Retiro,Divertido,Tarde,rentandroll.com
+114,Huerto Urbano,Esta es una Plaza,Gratis,Aire Libre,Lavapiés,C/ Doctor Fourquet 24,Comunitario,Mañana,esteesunaplaza.blogspot.com
+115,Brunch con Vistas,Zenith Brunch & Cocktails,€€,Gastronomía,Malasaña,C/ de Valverde 28,Trendy,Mañana,zenithcaffe.com
+116,Viaje a la India,Bangalore,€€€,Gastronomía,Salamanca,C/ de Diego de León 63,Exótico,Noche,restaurantebangalore.com
+117,Tacos de Diseño,Punto MX,€€€€,Gastronomía,Salamanca,C/ del General Pardiñas 40,Exclusivo,Noche,puntomx.es
+118,Café de Especialidad,Pum Pum Café,€,Gastronomía,Lavapiés,C/ del Tribulete 6,Hipster,Tarde,pumpumcafe.com
+119,Estrella Michelin,Coque,€€€€,Gastronomía,Chamberí,C/ del Marqués del Riscal 11,Lujo,Noche,restaurantecoque.com
+120,Fusión Japo-Peruana,Nakeima,€€€,Gastronomía,Argüelles,C/ de Meléndez Valdés 54,Intenso,Noche,nakeima.com
+121,Vermut y Tapas,La Ardosa,€,Gastronomía,Malasaña,C/ de Colón 13,Castizo,Mediodía,laardosa.com
+122,Cocina de Vanguardia,DSTAgE,€€€€,Gastronomía,Salesas,C/ de Regueros 8,Minimalista,Noche,dstageconcept.com
+123,Sabor a Tailandia,Krachai,€€,Gastronomía,Retiro,C/ de Fernando VI 11,Aromático,Noche,krachai.es
+124,Hamburguesa Smash,Juancho's BBQ,€,Gastronomía,Varios,Mercado de Chamberí,Casual,Comida,juanchosbbq.com
+125,Desayuno Real,La Mallorquina,€,Gastronomía,Sol,Pza. del Sol 8,Histórico,Mañana,lamallorquina.es
+126,Tortilla de Betanzos,Taberna Pedraza,€€€,Gastronomía,Retiro,C/ de Recoletos 4,Tradicional,Comida,tabernapedraza.com
+127,Pizza al Taglio,Grosso Napoletano,€,Gastronomía,Varios,C/ de Hermosilla 85,Rápido,Comida,grossonapoletano.com
+128,Experiencia Omakase,Kappo,€€€€,Gastronomía,Chamberí,C/ de Bretón de los Herreros 54,Gourmet,Noche,kappo.es
+129,Brunch Australiano,Toma Café,€,Gastronomía,Malasaña,C/ de la Palma 49,Relajado,Mañana,tomacafe.es
+130,Cócteles Clásicos,1862 Dry Bar,€€,Noche,Malasaña,C/ del Pez 27,Classy,Noche,1862drybar.com
+131,Vistas a Gran Vía,Picalagartos Sky Bar,€€€,Noche,Gran Vía,C/ Gran Vía 21,Vistas,Atardecer,picalagartos.com
+132,Techno Club,Mondo Disko,€€,Noche,Centro,C/ de Alcalá 20,Intenso,Madrugada,mondodisko.es
+133,Conciertos Indie,Sala El Sol,€,Noche,Centro,C/ de los Jardines 3,Underground,Noche,salaelsol.com
+134,Arcade y Cerveza,Next Level Arcade Bar,€,Noche,Centro,C/ de Tudescos 4,Gamer,Tardeo,nextlevelarcadebar.com
+135,Bar Secreto,Hemingway (Casa Suecia),€€€,Noche,Centro,C/ del Marqués de Casa Riera 4,Secreto,Noche,casasuecia.es
+136,Fiesta en Terraza,Le Tavernier,€€,Noche,Gran Vía,C/ de Mesonero Romanos 13,Fiesta,Tardeo,letavernier.es
+137,Rock en Directo,Costello Club,€,Noche,Malasaña,C/ del Caballero de Gracia 10,Canalla,Noche,costelloclub.com
+138,Vinos Naturales,Angelita Madrid,€€€,Noche,Chueca,C/ de la Reina 4,Sofisticado,Noche,angelitamadrid.com
+139,Afterwork con Vistas,Ginkgo Sky Bar,€€€,Noche,Plaza de España,Pza. de España 3,Elegante,Atardecer,ginkgoskybarmadrid.com
+140,Electrónica de Calidad,Fabrik,€€€,Noche,Humanes,Av. de la Industria 82,Festival,Madrugada,fabrik.es
+141,Bar de Hielo,Ice Bar,€€,Noche,Centro,C/ del Conde de Romanones 3,Curioso,Tarde,icebarmadrid.com
+142,Coctelería de Autor,Savas Bar,€€,Noche,Lavapiés,C/ de la Sombrerería 3,Moderno,Noche,savas.bar
+143,Noche de Baile,Sala But,€€,Noche,Malasaña,C/ de Barceló 11,Fiesta,Madrugada,butmadrid.com
+144,Cervezas del Mundo,La Tape,€,Noche,Malasaña,C/ de San Bernardo 88,Casual,Tardeo,latape.com
+145,Arte Moderno,Museo Thyssen-Bornemisza,€,Cultura,Prado,P.º del Prado 8,Cultural,Mañana,museothyssen.org
+146,Exposiciones Top,CaixaForum Madrid,Gratis,Cultura,Atocha,P.º del Prado 36,Moderno,Tarde,caixaforum.org
+147,Taller de Cocina Thai,The Cooking School,€€,Cultura,Chamberí,C/ de Santísima Trinidad 30,Creativo,Tarde,thecookingschool.es
+148,Centro Cultural,Matadero Madrid,Gratis,Cultura,Arganzuela,Pza. de Legazpi 8,Alternativo,Todo el día,mataderomadrid.org
+149,Tour Histórico,Madrid de los Austrias,€,Cultura,Centro,Pza. Mayor,Histórico,Mañana,civitatis.com
+150,Fotografía y Arte,La Fábrica,Gratis,Cultura,Letras,C/ de la Alameda 9,Artístico,Tarde,lafabrica.com
+151,Centro de Vanguardia,La Casa Encendida,Gratis,Cultura,Lavapiés,Rda. de Valencia 2,Joven,Tarde,lacasaencendida.es
+152,Taller de Perfumes,Le Studio des Parfums,€€€,Cultura,Salamanca,C/ del Conde de Aranda 6,Sensorial,Tarde,studiodesparfums.es
+153,Visita al Bernabéu,Tour Bernabéu,€€,Cultura,Chamartín,Av. de Concha Espina 1,Deporte,Mañana,realmadrid.com
+154,Historia de Madrid,Museo de Historia de Madrid,Gratis,Cultura,Malasaña,C/ de Fuencarral 78,Histórico,Mañana,madrid.es
+155,Jardines del Rey,Jardines del Campo del Moro,Gratis,Aire Libre,Palacio,P.º de la Virgen del Puerto,Romántico,Mañana,patrimonionacional.es
+156,Ruta de Senderismo,Senda del Agua,Gratis,Aire Libre,Cercedilla,Dehesas de Cercedilla,Naturaleza,Día,parquenacionalsierraguadarrama.es
+157,Paddle Surf,Embalse de San Juan,€€,Aire Libre,San Martín de Valdeiglesias,Pantano de San Juan,Aventura,Tarde,yukakyak.com
+158,Mercado de Diseño,Mercado de Motores,€,Aire Libre,Delicias,Museo del Ferrocarril,Trendy,Fin de semana,mercadodemotores.es
+159,Vistas Panorámicas,Mirador de la Cornisa,Gratis,Aire Libre,Palacio,C/ de la Almudena,Vistas,Atardecer,madrid.es
+160,Escalada en La Pedriza,Canto Cochino,€,Aire Libre,Manzanares,La Pedriza,Deporte,Día,parquenacionalsierraguadarrama.es
+161,Paseo por el Oeste,Parque del Oeste,Gratis,Aire Libre,Moncloa,P.º de Moret,Chill,Tarde,madrid.es
+162,Bici por la Casa de Campo,Casa de Campo,Gratis,Aire Libre,Casa de Campo,Lago de la Casa de Campo,Activo,Mañana,madrid.es
+163,Mercadillo de Flores,Mercado de las Flores,€,Aire Libre,Chamberí,C/ de Galileo,Colorido,Sábado,madrid.es
+164,Picnic en las Nubes,Parque Juan Carlos I,Gratis,Aire Libre,Barajas,Parque Juan Carlos I,Moderno,Mediodía,madrid.es`;
+
+        const FallbackImages = {
+            'Gastronomía': "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+            'Noche': "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=800&q=80",
+            'Cultura': "https://images.unsplash.com/photo-1518998053901-5348d3969105?auto=format&fit=crop&w=800&q=80",
+            'Aire Libre': "https://images.unsplash.com/photo-1501854623167-458a234e94f0?auto=format&fit=crop&w=800&q=80",
+            'default': "https://images.unsplash.com/photo-1522083165195-330f5b1c4f43?auto=format&fit=crop&w=800&q=80"
+        };
+
+        const KEYWORD_IMAGES = {
+            'sushi': '1579871494447-9811cf80d66c', 'japon': '1579871494447-9811cf80d66c', 'ramen': '1569718212165-3a8278d5f624',
+            'pizza': '1574829734306-0323e75fce47', 'italiano': '1574829734306-0323e75fce47', 'pasta': '1473093226795-af9932fe5856',
+            'hamburguesa': '1568901346375-23c9450c58cd', 'burger': '1550547660-d9450f859349', 'taco': '1565299624946-b28f40a0ae38', 
+            'mexicano': '1552332386-f8dd00d59264', 'cafe': '1554118811-1e0d58224f24', 'brunch': '1495474472287-4d71bcdd2085', 
+            'vino': '1510812431409-9290b7716b6e', 'bodega': '1506377247377-2a5b3b417ebb', 'terraza': '1549271647-79a09795156a', 
+            'azotea': '1570698471844-0cde4271842e', 'cine': '1489599849927-2ee91cede3ba', 'teatro': '1503095392213-2e2d37c6c0f7', 
+            'musical': '1503095392213-2e2d37c6c0f7', 'museo': '1518998053901-5348d3969105', 'arte': '1545989253-02cc26577f88',
+            'parque': '1582655259838-42284164eb3d', 'jardin': '1585084364426-3848b815668d', 'botanico': '1585084364426-3848b815668d',
+            'atardecer': '1563784462386-044fd95e9852', 'copas': '1514362545857-3bc16c4c7d1b', 'cocktail': '1551024709-8f23befc6f87', 
+            'jazz': '1511192336575-5a79af67a629', 'bolera': '1533174072545-214dd3e6e30b', 'kart': '1511426463457-0571e247d817', 
+            'spa': '1544161515-4ab6ce6db874', 'flamenco': '1504609813442-a8924e83f76e', 'ceramica': '1459156212016-c812468e2115',
+            'pintar': '1460661418454-eb74e3a52252', 'hachas': '1584381834983-9b2d3d995995', 'vr': '1593508512255-86ab42a8e620',
+            'caballo': '1553284965-8345700801b1', 'tirolina': '1533591380326-78765e6302e1', 'safari': '1534177616072-ef7dc12044f9',
+            'indio': '1585937421980-a337826552b8', 'thai': '1559314809-0d155014e29e', 'asiatico': '1559314809-0d155014e29e',
+            'peruano': '1535924403632-132d744b7f73', 'griego': '1564846268022-c86bc94593bf', 'helado': '1563805047-60c69998e168',
+            'dulce': '1563805047-60c69998e168', 'libro': '1512820790803-83ca734da794', 'cerveza': '1571106202933-727c9b244677',
+            'rock': '1514525253440-b393452e3728', 'tiki': '1514362545857-3bc16c4c7d1b'
+        };
+
+        const CATEGORY_POOLS = {
+            'Gastronomía': ["1517248135467-4c7edcad34c4", "1559339352-11d035aa65de", "1514362545857-3bc16c4c7d1b", "1504674900247-0877df9cc836"],
+            'Noche': ["1566737236500-c8ac43014a67", "1535916692233-e027964dfd3b", "1574096079513-d82599697b0e", "1545128485-c400e7702796"],
+            'Cultura': ["1513364776144-be095a4f8dd3", "1561839561448-9c92878a05a6", "1523580494863-6f3031224c94", "1519750783826-e2420f4d687f"],
+            'Aire Libre': ["1501854623167-458a234e94f0", "1441974231531-c6227db76b6e", "1472214103451-9374bd1c7dd1", "1500382017468-9049fed747ef"]
+        };
+
+        const VIBE_GROUPS = {
+            'Romántico': ['Romántico', 'Íntimo', 'Mágico', 'Puesta Sol', 'Luz', 'Pasión', 'Cute', 'Atardecer', 'Vintage'],
+            'Divertido': ['Divertido', 'Loco', 'Canalla', 'Fiesta', 'Risas', 'Show', 'Karaoke', 'Picante', 'Adrenalina', 'Velocidad', 'Kitsch', 'Tropical', 'Heavy', 'K-Pop'],
+            'Relax': ['Relax', 'Tranquilo', 'Acogedor', 'Chill', 'Invierno', 'Verano', 'Naturaleza', 'Flora', 'Zen', 'Saludable', 'Tradicional', 'Tradición', 'Healthy', 'Libros'],
+            'Exclusivo': ['Exclusivo', 'Elegante', 'Lujo', 'Pijo', 'Gourmet', 'Delicatessen', 'Classy', 'Vistas', 'Wow', 'Cool', 'Fusión', 'Chic', 'Premium'],
+            'Misterio': ['Misterio', 'Secreto', 'Clandestino', 'Exótico', 'Curioso', 'Dark', 'Terror', 'Fantasmas']
+        };
+
+        const MAP_POSITIONS = {
+            'Centro': { top: '63%', left: '50%' }, 'Salamanca': { top: '38%', left: '75%' }, 'Chamberí': { top: '35%', left: '52%' }, 
+            'Malasaña': { top: '50%', left: '45%' }, 'Chueca': { top: '50%', left: '58%' }, 'La Latina': { top: '75%', left: '42%' }, 
+            'Retiro': { top: '65%', left: '78%' }, 'Lavapiés': { top: '80%', left: '52%' }, 'Letras': { top: '68%', left: '60%' }, 
+            'Argüelles': { top: '35%', left: '30%' }, 'Moncloa': { top: '25%', left: '25%' }, 'Chamartín': { top: '15%', left: '70%' }, 
+            'Atocha': { top: '85%', left: '65%' }, 'Arganzuela': { top: '90%', left: '50%' } 
+        };
+
+        // ==========================================
+        // 2. HELPER FUNCTIONS
+        // ==========================================
+
+        function getPlanImage(plan, width = 800) {
+            const text = (plan["Nombre Creativo"] + " " + plan["Lugar Real"] + " " + plan.Categoria).toLowerCase();
+            const keywordMatch = Object.entries(KEYWORD_IMAGES).find(([keyword]) => text.includes(keyword));
+            
+            let photoId;
+            if (keywordMatch) {
+                photoId = keywordMatch[1];
+            } else {
+                let pool = CATEGORY_POOLS[plan.Categoria] || CATEGORY_POOLS['Aire Libre'];
+                const index = parseInt(plan.ID, 10) % pool.length;
+                photoId = pool[index];
+            }
+            
+            // Auto-quality based on device width
+            const quality = width <= 300 ? 50 : width <= 800 ? 75 : 85;
+            return `https://images.unsplash.com/photo-${photoId}?auto=format&fit=crop&w=${width}&q=${quality}&fm=webp`;
+        }
+
+        function generateDescription(plan) {
+            return `Descubre ${plan["Lugar Real"]}, una experiencia única en ${plan.Barrio}. Perfecto para un plan de ${plan.Categoria} con un ambiente ${plan.Vibe}.`;
+        }
+
+        function generateCalendarUrl(plan) {
+            const title = encodeURIComponent(plan["Nombre Creativo"]);
+            const details = encodeURIComponent(`Plan de ${plan.Categoria} en ${plan["Lugar Real"]}. ${plan.URL}`);
+            const location = encodeURIComponent(`${plan["Lugar Real"]}, Madrid`);
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(20, 0, 0, 0);
+            const start = tomorrow.toISOString().replace(/-|:|\.\d\d\d/g, "");
+            const end = new Date(tomorrow.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g, "");
+            
+            return `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${start}/${end}`;
+        }
+        
+        function getDressCode(price) {
+            if (price === '€€€€') return 'Formal / Elegante';
+            if (price === '€€€') return 'Smart Casual';
+            return 'Casual / Relajado';
+        }
+
+        function getNoiseLevel(vibe) {
+            const noisy = ['Divertido', 'Fiesta', 'Loco', 'Canalla', 'Bullicioso'];
+            if (noisy.some(v => vibe.includes(v))) return 'Alto - Animado';
+            if (['Romántico', 'Íntimo', 'Relax', 'Tranquilo'].some(v => vibe.includes(v))) return 'Bajo - Conversación';
+            return 'Medio - Ambiente';
+        }
+
+        // --- 3. ICONS DEFINITION ---
+        const Icons = {
+            Search: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>,
+            MapPin: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+            ExternalLink: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>,
+            Heart: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>,
+            Sparkles: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>,
+            X: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
+            Image: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>,
+            Star: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+            Share: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>,
+            Crown: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>,
+            User: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+            MessageSquare: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+            Gift: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>,
+            CheckCircle: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
+            Filter: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>,
+            List: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>,
+            Grid: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
+            Trash: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>,
+            Pizza: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 21l-3-3-3 3"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M14.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M9.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>,
+            Wine: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg>,
+            ArrowLeft: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>,
+            BookOpen: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>,
+            ShoppingBag: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>,
+            ShoppingCart: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>,
+            Calendar: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>,
+            Palette: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>,
+            TreePine: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.9-1.5l2.9-4H8.6a1 1 0 0 1-.6-1.6l2.9-4.3a1 1 0 0 1 1.6 0l2.9 4.3a1 1 0 0 1-.6 1.6H12l2.9 4H14.3a1 1 0 0 1-.9 1.5l3 3.3h.3a1 1 0 0 1-.7 1.7z"/><path d="M12 22v-3"/></svg>,
+            Dice: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></svg>,
+            Lock: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+            Settings: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
+            Moon: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>,
+            Sun: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>,
+            Bell: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>,
+            CloudSun: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></svg>,
+            Wand: (p) => <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8 19 13"/><path d="M15 9h0"/><path d="M17.8 6.2 19 5"/><path d="m3 21 9-9"/><path d="M12.2 6.2 11 5"/></svg>
+        };
+
+        // --- 4. UTILITY COMPONENTS ---
+
+        const SmartImage = ({ src, alt, className, fallbackCategory = 'default', textFallback, ...props }) => {
+            const [isLoaded, setIsLoaded] = useState(false);
+            const [hasError, setHasError] = useState(false);
+            const [currentSrc, setCurrentSrc] = useState(src);
+            const [blurUrl, setBlurUrl] = useState(null);
+
+            useEffect(() => {
+                if (src) {
+                    setCurrentSrc(src);
+                    setIsLoaded(false);
+                    setHasError(false);
+                    // Generate blur-up placeholder (small compressed version)
+                    if (src && src.includes('unsplash')) {
+                        const params = src.includes('?') ? '&' : '?';
+                        setBlurUrl(`${src}${params}w=50&q=10&blur=20`);
+                    }
+                } else {
+                    setHasError(true);
+                }
+            }, [src]);
+
+            const handleError = () => {
+                if (currentSrc === src) {
+                    const fallback = FallbackImages[fallbackCategory] || FallbackImages['default'];
+                    if (fallback && fallback !== src) {
+                        setCurrentSrc(fallback);
+                        return;
+                    }
+                }
+                const generic = FallbackImages['default'];
+                if (currentSrc !== generic && generic) {
+                    setCurrentSrc(generic);
+                    return;
+                }
+                setHasError(true);
+            };
+
+            const getGradient = (str) => {
+                const colors = ['from-pink-500 to-rose-500', 'from-purple-500 to-indigo-500', 'from-blue-400 to-cyan-500', 'from-teal-400 to-emerald-500', 'from-orange-400 to-amber-500', 'from-rose-400 to-pink-500'];
+                const index = str ? str.length % colors.length : 0;
+                return colors[index];
+            };
+
+            if (hasError) {
+                return (
+                    <div className={`relative overflow-hidden ${className} bg-gray-100 dark:bg-slate-800`}>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${getGradient(textFallback || alt)} flex flex-col items-center justify-center p-6 text-center`}>
+                           <span className="text-white font-bold text-lg drop-shadow-md line-clamp-2 leading-tight">{textFallback || alt || "Plan"}</span>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className={`relative overflow-hidden ${className} bg-gray-200 dark:bg-slate-800`}>
+                    {!isLoaded && blurUrl && <img src={blurUrl} alt="" className="absolute inset-0 w-full h-full object-cover blur-sm" />}
+                    {!isLoaded && <div className="absolute inset-0 skeleton z-10"></div>}
+                    <img
+                        {...props}
+                        src={currentSrc}
+                        alt={alt}
+                        className={`w-full h-full object-cover transition-opacity duration-500 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        onLoad={() => setIsLoaded(true)}
+                        onError={handleError}
+                        loading="lazy"
+                        decoding="async"
+                        width="auto" height="auto"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                </div>
+            );
+        };
+
+        // --- 5. NEW & UPDATED VIEW COMPONENTS ---
+        
+        const WeatherWidget = () => (
+            <div className="hidden md:flex items-center gap-2 bg-blue-50 dark:bg-slate-800/50 px-3 py-1.5 rounded-full border border-blue-100 dark:border-slate-700">
+                <Icons.Wand className="w-5 h-5 text-pink-500 dark:text-pink-400" />
+                <div className="flex flex-col leading-none">
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">Consejo rápido</span>
+                    <span className="text-[10px] text-gray-500 dark:text-gray-400">Elige primero el barrio y luego el ambiente ✨</span>
+                </div>
+            </div>
+        );
+
+        const DateGeneratorModal = ({ isOpen, onClose, data, onSave }) => {
+            if (!isOpen) return null;
+            const [step, setStep] = useState(0); // 0: vibe, 1: generating, 2: result
+            const [selectedVibe, setSelectedVibe] = useState(null);
+            const [generatedPlan, setGeneratedPlan] = useState(null);
+
+            const vibes = [
+                { id: 'Romántico', icon: '❤️', label: 'Romántico', color: 'from-pink-500 to-rose-500' },
+                { id: 'Divertido', icon: '🎉', label: 'Divertido', color: 'from-orange-400 to-amber-500' },
+                { id: 'Relax', icon: '🍃', label: 'Relax', color: 'from-teal-400 to-emerald-500' },
+                { id: 'Exclusivo', icon: '💎', label: 'Exclusivo', color: 'from-purple-500 to-indigo-500' }
+            ];
+
+            const generate = (vibe) => {
+                setSelectedVibe(vibe);
+                setStep(1);
+                
+                // Simulate processing
+                setTimeout(() => {
+                    const filterByVibe = (items, category) => {
+                        return items.filter(p => p.Categoria === category && (p.Vibe.includes(vibe) || VIBE_GROUPS[vibe].includes(p.Vibe)));
+                    };
+                    
+                    const dinner = filterByVibe(data, 'Gastronomía');
+                    const activity = filterByVibe(data, 'Cultura').concat(filterByVibe(data, 'Aire Libre'));
+                    const drinks = filterByVibe(data, 'Noche');
+
+                    const getRandom = (arr) => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : data.filter(p => p.Categoria === 'Gastronomía')[0]; // fallback
+
+                    setGeneratedPlan({
+                        dinner: getRandom(dinner),
+                        activity: getRandom(activity),
+                        drinks: getRandom(drinks)
+                    });
+                    setStep(2);
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                }, 2000);
+            };
+
+            const reset = () => {
+                setStep(0);
+                setSelectedVibe(null);
+                setGeneratedPlan(null);
+            };
+
+            return (
+                <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-black/80 backdrop-blur-lg" onClick={onClose}></div>
+                    <div className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+                        <div className="p-6 border-b border-gray-100 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 sticky top-0 z-10">
+                            <h2 className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-2">
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">Magic Generator</span>
+                                <Icons.Wand className="w-6 h-6 text-pink-500" />
+                            </h2>
+                            <button onClick={onClose} aria-label="Cerrar generador de cita" className="p-2 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-full transition-colors"><Icons.X className="w-6 h-6" /></button>
+                        </div>
+                        
+                        <div className="p-8 overflow-y-auto custom-scroll flex-grow">
+                            {step === 0 && (
+                                <div className="text-center fade-in">
+                                    <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">¿Qué mood tenéis hoy?</h3>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {vibes.map(v => (
+                                            <button key={v.id} onClick={() => generate(v.id)} className="group relative h-40 rounded-3xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform">
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${v.color} opacity-90 group-hover:opacity-100 transition-opacity`}></div>
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                                                    <span className="text-5xl mb-2 filter drop-shadow-md">{v.icon}</span>
+                                                    <span className="text-xl font-bold tracking-wide drop-shadow-md">{v.label}</span>
+                                                </div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {step === 1 && (
+                                <div className="flex flex-col items-center justify-center h-64 fade-in text-center">
+                                    <div className="w-16 h-16 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin mb-6"></div>
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Consultando a los astros...</h3>
+                                    <p className="text-gray-500">Creando la cita perfecta para ti</p>
+                                </div>
+                            )}
+
+                            {step === 2 && generatedPlan && (
+                                <div className="space-y-8 fade-in">
+                                    <div className="text-center mb-6">
+                                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">✨ Tu Itinerario {selectedVibe}</h3>
+                                        <p className="text-gray-500">Una noche diseñada para ser inolvidable</p>
+                                    </div>
+                                    
+                                    <div className="relative pl-8 border-l-2 border-dashed border-gray-200 dark:border-slate-700 space-y-8">
+                                        {[
+                                            { type: 'Activity', data: generatedPlan.activity, time: '18:00', label: 'Para Empezar' },
+                                            { type: 'Dinner', data: generatedPlan.dinner, time: '21:00', label: 'Cena Romántica' },
+                                            { type: 'Drinks', data: generatedPlan.drinks, time: '23:30', label: 'Fin de Fiesta' }
+                                        ].map((item, i) => (
+                                            <div key={i} className="relative group">
+                                                <div className="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-pink-500 border-4 border-white dark:border-slate-900 z-10"></div>
+                                                <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-md flex gap-4 border border-gray-100 dark:border-slate-700 hover:shadow-xl transition-shadow">
+                                                    <SmartImage src={getPlanImage(item.data, 200)} className="w-24 h-24 rounded-xl flex-shrink-0" alt={item.data["Nombre Creativo"]} />
+                                                    <div className="flex-grow min-w-0">
+                                                        <div className="flex justify-between items-start mb-1">
+                                                            <span className="text-xs font-bold text-pink-500 uppercase tracking-wider">{item.time} • {item.label}</span>
+                                                            <span className="text-[10px] bg-gray-100 dark:bg-slate-700 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">{item.data.Barrio}</span>
+                                                        </div>
+                                                        <h4 className="font-bold text-lg text-gray-900 dark:text-white truncate">{item.data["Nombre Creativo"]}</h4>
+                                                        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-2">{item.data["Lugar Real"]}</p>
+                                                        <div className="flex gap-2">
+                                                            <span className="text-xs font-medium px-2 py-1 bg-gray-50 dark:bg-slate-900 rounded border border-gray-100 dark:border-slate-700">💰 {item.data.Precio}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="flex gap-4 pt-4">
+                                        <button onClick={reset} className="px-6 py-4 rounded-xl font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Probar otro</button>
+                                        <button onClick={() => { onSave([generatedPlan.dinner.ID, generatedPlan.activity.ID, generatedPlan.drinks.ID]); onClose(); }} className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 rounded-xl font-bold shadow-xl hover:scale-[1.02] active:scale-95 transition-all">Guardar Itinerario Completo</button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const OnboardingModal = ({ onClose }) => {
+            return (
+                <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose}></div>
+                    <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl p-8 relative z-10 shadow-2xl fade-in-up text-center border border-white/20">
+                        <div className="w-20 h-20 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                            <span className="text-4xl">👋</span>
+                        </div>
+                        <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-3">¡Bienvenido!</h2>
+                        <p className="text-gray-500 mb-8 text-lg">Descubre los planes más románticos y divertidos de Madrid. Guarda tus favoritos y sorprende a tu pareja.</p>
+                        <button onClick={onClose} aria-label="Cerrar bienvenida" className="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl font-bold shadow-xl hover:shadow-pink-500/25 transform hover:scale-[1.02] transition-all">
+                            Empezar a explorar
+                        </button>
+                    </div>
+                </div>
+            )
+        }
+
+        const ShopView = ({ onBack, showToast }) => {
+            const [cartCount, setCartCount] = useState(0);
+            const [searchTerm, setSearchTerm] = useState('');
+            const [filterCategory, setFilterCategory] = useState('Todos');
+            const [sortBy, setSortBy] = useState('featured');
+
+            const handleBuy = (productName) => {
+                showToast(`¡${productName} añadido al carrito!`);
+                setCartCount(cartCount + 1);
+                confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 }, colors: ['#ec4899'] });
+            };
+
+            const filteredProducts = useMemo(() => {
+                let items = SHOP_PRODUCTS.filter(p => 
+                    (filterCategory === 'Todos' || p.tag === filterCategory) &&
+                    (searchTerm === '' || p.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                );
+                
+                if (sortBy === 'price-asc') {
+                    items.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+                } else if (sortBy === 'price-desc') {
+                    items.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+                }
+                return items;
+            }, [searchTerm, filterCategory, sortBy]);
+
+            return (
+                <div className="max-w-6xl mx-auto px-4 pt-6 fade-in pb-32">
+                            <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md" aria-label="Volver a la página anterior">
+                        <Icons.ArrowLeft className="w-4 h-4" /> Volver
+                    </button>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 gap-4">
+                        <div>
+                            <span className="text-pink-500 font-bold tracking-wider uppercase text-xs mb-2 block">Regalos Originales</span>
+                            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">Tienda del Amor</h2>
+                            <p className="text-gray-500 dark:text-gray-400 mt-3 max-w-xl text-sm md:text-base">
+                                Pequeños detalles que convierten cualquier plan en algo inolvidable. Elige un regalo que encaje
+                                con vuestro estilo: juegos de conversación, experiencias, tech y más.
+                            </p>
+                        </div>
+                        <div className="bg-pink-50 dark:bg-pink-900/10 border border-pink-100 dark:border-pink-900/40 rounded-2xl px-4 py-3 text-xs md:text-sm text-pink-700 dark:text-pink-200 max-w-xs">
+                            <span className="font-bold block mb-1">Tip rápido</span>
+                            <span>Combina un regalo físico con un plan de la app para crear una sorpresa 360°.</span>
+                        </div>
+                        <div className="bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-lg shadow-lg">{cartCount}</div>
+                    </div>
+                    
+                    {/* Search & Filters */}
+                    <div className="mb-8 space-y-4">
+                        <div className="relative">
+                            <Icons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <input type="text" placeholder="Buscar productos..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-white dark:bg-slate-800 rounded-xl pl-12 pr-4 py-3 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-500 outline-none transition-all font-bold" />
+                        </div>
+                        <div className="flex gap-3 flex-wrap">
+                            <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)} className="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-sm font-bold text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none">
+                                <option value="Todos">Todas las categorías</option>
+                                {['Bestseller', 'Relax', 'Tech', 'Diversión', 'Outdoor', 'Regalo Top', 'Cine', 'Experiencia', 'Romántico', 'Ambiente', 'Foodie', 'Self-care'].map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                            </select>
+                            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-sm font-bold text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none">
+                                <option value="featured">Destacados</option>
+                                <option value="price-asc">Precio menor</option>
+                                <option value="price-desc">Precio mayor</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        {filteredProducts.map(product => (
+                            <div key={product.id} className="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group relative border border-gray-100 dark:border-slate-800 flex flex-col h-full">
+                                <div className="h-72 relative overflow-hidden">
+                                    <SmartImage src={product.image} alt={product.name} className="h-full w-full" textFallback={product.name} />
+                                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider z-20 text-gray-900 shadow-lg">{product.tag}</span>
+                                </div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <div className="flex justify-between items-start mb-3">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight font-serif pr-4">{product.name}</h3>
+                                        <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">{product.price}</span>
+                                    </div>
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed flex-grow">{product.description}</p>
+                                    <div className="flex gap-3 mt-auto">
+                                        <button onClick={() => handleBuy(product.name)} className="flex-1 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+                                            <Icons.ShoppingCart className="w-4 h-4" /> Añadir
+                                        </button>
+                                        <a href={product.url} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-white rounded-xl hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"><Icons.ExternalLink className="w-5 h-5" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-12 grid gap-6 md:grid-cols-3">
+                        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm">
+                            <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1">Para primeras citas</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Elige algo ligero y divertido: juegos de preguntas, experiencias de cocina o un detalle pequeño.
+                            </p>
+                        </div>
+                        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm">
+                            <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1">Para aniversarios</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Apuesta por experiencias memorables: escapadas sorpresa, cenas especiales o regalos personalizados.
+                            </p>
+                        </div>
+                        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm">
+                            <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-1">Para todos los días</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                Detalles sencillos que mantienen la chispa: kits de masaje, cartas o un proyector para noches de peli.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const BlogView = ({ onSelectPost, onBack }) => {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedCategory, setSelectedCategory] = useState('Todos');
+            
+            const filteredPosts = useMemo(() => {
+                return BLOG_POSTS.filter(post => 
+                    (selectedCategory === 'Todos' || post.category === selectedCategory) &&
+                    (searchTerm === '' || post.title.toLowerCase().includes(searchTerm.toLowerCase()))
+                );
+            }, [searchTerm, selectedCategory]);
+            
+            const stats = useMemo(() => ({
+                total: BLOG_POSTS.length,
+                categories: new Set(BLOG_POSTS.map(p => p.category)).size,
+                avgReadTime: Math.round(BLOG_POSTS.reduce((sum, p) => sum + parseInt(p.readTime), 0) / BLOG_POSTS.length)
+            }), []);
+
+            return (
+            <div className="max-w-6xl mx-auto px-4 pt-6 fade-in pb-32">
+                <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md">
+                    <Icons.ArrowLeft className="w-4 h-4" /> Volver
+                </button>
+                <div className="mb-10 text-center max-w-2xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">El Blog del Amor</h2>
+                    <p className="text-gray-500 text-lg">Historias, guías y secretos para mantener viva la llama.</p>
+                    <p className="text-gray-400 dark:text-gray-500 text-sm mt-3">
+                        Consejos prácticos para antes, durante y después de la cita. Lee un artículo, guarda un plan, pruébalo este fin de semana.
+                    </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-3 mb-10">
+                    <div className="bg-gradient-to-br from-pink-100 to-rose-100 dark:from-pink-900/20 dark:to-rose-900/20 rounded-2xl p-6 border border-pink-200 dark:border-pink-900/30 text-center">
+                        <div className="text-3xl font-black text-pink-600 dark:text-pink-400">{stats.total}</div>
+                        <div className="text-sm font-bold text-pink-700 dark:text-pink-300 uppercase tracking-widest mt-1">Artículos</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-900/30 text-center">
+                        <div className="text-3xl font-black text-purple-600 dark:text-purple-400">{stats.avgReadTime} min</div>
+                        <div className="text-sm font-bold text-purple-700 dark:text-purple-300 uppercase tracking-widest mt-1">Lectura Media</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-900/30 text-center">
+                        <div className="text-3xl font-black text-blue-600 dark:text-blue-400">{filteredPosts.length}</div>
+                        <div className="text-sm font-bold text-blue-700 dark:text-blue-300 uppercase tracking-widest mt-1">Resultados</div>
+                    </div>
+                </div>
+
+                <div className="mb-10 space-y-4">
+                    <div className="relative">
+                        <Icons.Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input type="text" placeholder="Buscar artículos..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-white dark:bg-slate-800 rounded-xl pl-12 pr-4 py-3 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-pink-500 outline-none transition-all font-bold" />
+                    </div>
+                    <div className="flex gap-3 flex-wrap">
+                        {['Todos', 'Consejos', 'Planes diferentes', 'Lugares secretos', 'Low Cost', 'Relaciones largas'].map(cat => (
+                            <button key={cat} onClick={() => setSelectedCategory(cat)} className={`px-4 py-2 rounded-full text-sm font-bold uppercase transition-all border ${selectedCategory === cat ? 'bg-pink-500 text-white border-pink-500 shadow-md' : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-slate-700 hover:border-pink-300'}`}>
+                            {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="grid gap-8 md:grid-cols-2">
+                    {filteredPosts.map(post => (
+                        <div key={post.id} onClick={() => onSelectPost(post)} className="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-md cursor-pointer hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-slate-800 h-full flex flex-col transform hover:-translate-y-1">
+                            <div className="h-64 overflow-hidden relative">
+                                <SmartImage src={post.image} alt={post.title} className="h-full w-full transform group-hover:scale-105 transition-transform duration-700" fallbackCategory="Cultura" textFallback={post.title}/>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white/90 text-xs font-medium">
+                                    <span className="bg-black/30 backdrop-blur-md px-2 py-1 rounded-md border border-white/20">{post.readTime} lectura</span>
+                                    <span>{post.date}</span>
+                                </div>
+                            </div>
+                            <div className="p-8 flex-grow flex flex-col">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-tight group-hover:text-purple-600 transition-colors font-serif">{post.title}</h3>
+                                <p className="text-gray-500 dark:text-gray-400 line-clamp-3 mb-6 flex-grow">{post.excerpt}</p>
+                                <span className="text-sm font-bold text-purple-600 uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Leer Artículo <Icons.ArrowLeft className="w-4 h-4 rotate-180" /></span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {filteredPosts.length === 0 && (
+                    <div className="text-center py-12 bg-gray-50 dark:bg-slate-800/30 rounded-3xl border-2 border-dashed border-gray-300 dark:border-slate-700">
+                        <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">No hay artículos que coincidan con tu búsqueda</p>
+                    </div>
+                )}
+            </div>
+        );
+        };
+
+        const BlogPostView = ({ post, onBack }) => {
+            useEffect(() => { window.scrollTo(0, 0); }, []);
+            return (
+                <div className="bg-white dark:bg-slate-900 min-h-screen pb-32">
+                    <div className="relative h-[50vh] w-full">
+                        <SmartImage src={post.image} className="w-full h-full" alt={post.title} fallbackCategory="Cultura" textFallback={post.title}/>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
+                        <button onClick={onBack} className="absolute top-6 left-6 z-20 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all font-bold text-sm flex items-center gap-2 border border-white/20"><Icons.ArrowLeft className="w-4 h-4" /> Volver</button>
+                    </div>
+                    <div className="max-w-3xl mx-auto px-6 -mt-32 relative z-10">
+                        <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-slate-800">
+                            <h1 className="text-3xl md:text-5xl font-black text-center text-gray-900 dark:text-white mb-4 font-serif leading-tight">{post.title}</h1>
+                            <div className="flex items-center justify-center gap-3 text-xs text-gray-400 mb-8">
+                                <span className="inline-flex items-center gap-1 bg-gray-50 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-100 dark:border-slate-700">
+                                    <Icons.User className="w-3 h-3" /> {post.author || "Equipo The Perfect Date"}
+                                </span>
+                                <span className="inline-flex items-center gap-1 bg-gray-50 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-100 dark:border-slate-700">
+                                    <Icons.Calendar className="w-3 h-3" /> {post.date}
+                                </span>
+                                <span className="inline-flex items-center gap-1 bg-gray-50 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-100 dark:border-slate-700">
+                                    ⏱ {post.readTime}
+                                </span>
+                            </div>
+                            <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const PlanCard = ({ plan, onOpen, isFavorite, onToggleFavorite, viewMode }) => {
+            const isNew = parseInt(plan.ID) > 100;
+            if (viewMode === 'list') {
+                 return (
+                    <div onClick={() => onOpen(plan)} className="group bg-white dark:bg-slate-900 rounded-2xl p-3 flex gap-4 shadow-sm border border-gray-100 dark:border-slate-800 cursor-pointer hover:shadow-lg hover:border-pink-200 dark:hover:border-pink-900/30 transition-all duration-300 card-hover items-center">
+                        <div className="w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 relative shadow-inner">
+                             <SmartImage src={getPlanImage(plan, 400)} className="w-full h-full transform group-hover:scale-110 transition-transform duration-700" alt={plan["Nombre Creativo"]} fallbackCategory={plan.Categoria} textFallback={plan["Nombre Creativo"]} />
+                         </div>
+                         <div className="py-1 flex flex-col h-full justify-center flex-grow min-w-0 pr-2">
+                             <div className="mb-1">
+                                 <div className="flex justify-between items-start">
+                                     <h4 className="font-bold text-gray-900 dark:text-white text-base truncate pr-2 flex items-center gap-2">
+                                        {plan["Nombre Creativo"]}
+                                        {isNew && <span className="text-[8px] badge-new px-1.5 py-0.5 rounded uppercase font-extrabold tracking-widest">Nuevo</span>}
+                                     </h4>
+                                     <span className="text-[10px] font-bold text-gray-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-full whitespace-nowrap border border-gray-200 dark:border-slate-700">{plan.Precio}</span>
+                                 </div>
+                                 <p className="text-sm text-gray-500 dark:text-gray-400 truncate flex items-center gap-1"><Icons.MapPin className="w-3 h-3 text-gray-400" /> {plan["Lugar Real"]}</p>
+                             </div>
+                             <div className="flex items-center justify-between mt-2">
+                                <span className="text-[10px] bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-300 px-2 py-1 rounded-md font-bold border border-pink-100 dark:border-pink-900/30">{plan.Categoria}</span>
+                                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(plan.ID); }} className={`p-2 rounded-full transition-all active:scale-90 ${isFavorite ? 'text-red-500 bg-red-50 dark:bg-red-900/20' : 'text-gray-300 hover:text-red-500 hover:bg-gray-100 dark:hover:bg-slate-800'}`}>
+                                    <Icons.Heart className={`w-5 h-5 ${isFavorite ? 'fill-current' : ''}`} />
+                                </button>
+                             </div>
+                         </div>
+                    </div>
+                );
+            }
+            return (
+                <div className={`bg-white dark:bg-slate-900 rounded-[1.75rem] overflow-hidden shadow-sm border border-gray-100 dark:border-slate-800 card-hover cursor-pointer relative group h-[380px] flex flex-col`} onClick={() => onOpen(plan)}>
+                    <div className="h-[220px] relative overflow-hidden">
+                        <SmartImage src={getPlanImage(plan, 800)} alt={plan["Nombre Creativo"]} className="w-full h-full transform group-hover:scale-105 transition-transform duration-700" fallbackCategory={plan.Categoria} textFallback={plan["Nombre Creativo"]} />
+                        <div className="absolute top-4 right-4 z-20">
+                            <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(plan.ID); }} className={`p-2.5 rounded-full backdrop-blur-md transition-all active:scale-90 shadow-lg ${isFavorite ? 'bg-white text-red-500' : 'bg-black/30 text-white hover:bg-white hover:text-red-500'}`}>
+                                <Icons.Heart className={`w-5 h-5 ${isFavorite ? 'fill-current' : ''}`} />
+                            </button>
+                        </div>
+                        <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
+                            {plan.Precio === '€€€€' && <div className="badge-premium px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-lg backdrop-blur-sm border border-white/20"><Icons.Crown className="w-3 h-3" /> Exclusive</div>}
+                            {isNew && <div className="badge-new px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm border border-white/20">Nuevo</div>}
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                             <div className="flex items-center gap-1.5 text-white/90 text-xs font-bold mb-1 shadow-black/50 drop-shadow-md">
+                                <Icons.MapPin className="w-3.5 h-3.5" /> {plan.Barrio}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-5 flex flex-col justify-between flex-grow bg-white dark:bg-slate-900 relative">
+                        <div>
+                            <div className="flex justify-between items-start mb-2">
+                                <h3 className="text-lg font-bold leading-tight text-gray-900 dark:text-white line-clamp-1 pr-2">{plan["Nombre Creativo"]}</h3>
+                                <div className="flex-shrink-0 flex items-center gap-1 bg-yellow-50 dark:bg-yellow-900/20 px-2 py-1 rounded-lg text-xs font-bold text-yellow-700 dark:text-yellow-400 border border-yellow-100 dark:border-yellow-900/30">
+                                    <Icons.Star className="w-3 h-3 text-yellow-500 fill-yellow-500"/> {plan.Rating}
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-4 font-medium">{plan["Lugar Real"]}</p>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2 mt-auto">
+                             <span className="text-xs px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-bold tracking-wide uppercase">{plan.Categoria}</span>
+                             {plan.tags && plan.tags.length > 0 && <span className="text-xs px-3 py-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-300 font-bold border border-purple-100 dark:border-purple-900/30">#{plan.tags[0]}</span>}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const HorizontalCollection = ({ title, items, onOpen }) => {
+            if (!items || items.length === 0) return null;
+            return (
+                <div className="mb-12">
+                    <div className="flex items-center justify-between px-2 mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">{title}</h3>
+                    </div>
+                    <div className="flex overflow-x-auto gap-5 pb-8 -mx-4 px-4 no-scrollbar snap-x scroll-smooth">
+                        {items.map(plan => (
+                             <div key={plan.ID} onClick={() => onOpen(plan)} className="min-w-[280px] md:min-w-[320px] h-[220px] rounded-[1.5rem] relative overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0 snap-center group border border-white/10">
+                                <SmartImage src={getPlanImage(plan, 600)} className="w-full h-full transform group-hover:scale-110 transition-transform duration-700" alt={plan["Nombre Creativo"]} fallbackCategory={plan.Categoria} textFallback={plan["Nombre Creativo"]} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+                                    <div className="flex flex-wrap gap-1.5 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+                                        <span className="text-[10px] font-bold bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-white border border-white/20">{plan.Categoria}</span>
+                                    </div>
+                                    <span className="text-white font-bold text-xl leading-tight mb-1 drop-shadow-md">{plan["Nombre Creativo"]}</span>
+                                    <div className="flex items-center gap-2 mt-1">
+                                        <Icons.Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                                        <span className="text-white/90 text-xs font-bold">{plan.Rating} • {plan.Barrio}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+
+        const FilterDrawer = ({ isOpen, onClose, filters, setFilters, neighborhoods, allTags, resultCount }) => {
+            if (!isOpen) return null;
+            return (
+                <div className="fixed inset-0 z-[60] flex justify-end">
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
+                    <div className="relative w-full max-w-md bg-white dark:bg-slate-900 h-full shadow-2xl p-8 flex flex-col fade-in-up border-l border-gray-100 dark:border-slate-800">
+                        <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-100 dark:border-slate-800">
+                            <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">Filtros</h2>
+                            <button onClick={onClose} aria-label="Cerrar filtros" className="p-2 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-full transition-colors"><Icons.X className="w-6 h-6 text-gray-500" /></button>
+                        </div>
+                        <div className="flex-grow space-y-10 overflow-y-auto custom-scroll pr-2 pb-24">
+                            <div>
+                                <h3 className="text-xs font-extrabold text-gray-400 uppercase tracking-widest mb-4">Categoría</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Todas', 'Gastronomía', 'Noche', 'Cultura', 'Aire Libre'].map(cat => (
+                                        <button key={cat} onClick={() => setFilters({...filters, category: cat})} className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all border shadow-sm ${filters.category === cat ? 'bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-black scale-105' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700'}`}>{cat}</button>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-extrabold text-gray-400 uppercase tracking-widest mb-4">Ambiente</h3>
+                                <div className="flex flex-wrap gap-3">
+                                    {[{ l: 'Romántico ❤️', v: 'Romántico' }, { l: 'Divertido 🎉', v: 'Divertido' }, { l: 'Chill 🍃', v: 'Relax' }, { l: 'Exclusivo 💎', v: 'Exclusivo' }, { l: 'Misterio 🕵️‍♀️', v: 'Misterio' }].map(v => (
+                                        <button key={v.v} onClick={() => setFilters({...filters, vibe: v.v})} className={`px-4 py-3 rounded-xl text-sm font-bold transition-all border ${filters.vibe === v.v ? 'bg-pink-500 text-white border-pink-500 shadow-lg shadow-pink-500/30 transform scale-105' : 'bg-white text-gray-600 border-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700 hover:bg-gray-50'}`}>{v.l}</button>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-extrabold text-gray-400 uppercase tracking-widest mb-4">Presupuesto</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Todos', '€', '€€', '€€€', '€€€€'].map(price => (
+                                        <button
+                                            key={price}
+                                            onClick={() => setFilters({ ...filters, price })}
+                                            className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all border shadow-sm ${
+                                                filters.price === price
+                                                    ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/30 transform scale-105'
+                                                    : 'bg-white text-gray-600 border-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700 hover:bg-gray-50'
+                                            }`}
+                                        >
+                                            {price === 'Todos' ? 'Cualquiera' : price}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                            {allTags && allTags.length > 0 && (
+                                <div>
+                                    <h3 className="text-xs font-extrabold text-gray-400 uppercase tracking-widest mb-4">Tipo de comida / plan</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        <button
+                                            onClick={() => setFilters({ ...filters, tag: 'Todos' })}
+                                            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                                                filters.tag === 'Todos'
+                                                    ? 'bg-purple-500 text-white border-purple-500 shadow-lg shadow-purple-500/30 transform scale-105'
+                                                    : 'bg-white text-gray-600 border-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700 hover:bg-gray-50'
+                                            }`}
+                                        >
+                                            Todos
+                                        </button>
+                                        {allTags.map(tag => (
+                                            <button
+                                                key={tag}
+                                                onClick={() => setFilters({ ...filters, tag })}
+                                                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                                                    filters.tag === tag
+                                                        ? 'bg-purple-500 text-white border-purple-500 shadow-lg shadow-purple-500/30 transform scale-105'
+                                                        : 'bg-white text-gray-600 border-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700 hover:bg-gray-50'
+                                                }`}
+                                            >
+                                                #{tag}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="pt-6 border-t border-gray-100 dark:border-slate-800 flex gap-4 bg-white dark:bg-slate-900 relative z-10">
+                            <button onClick={() => setFilters({ category: 'Todas', vibe: 'Todos', neighborhood: 'Todos', price: 'Todos', tag: 'Todos' })} className="px-6 py-4 rounded-xl font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"><Icons.Trash className="w-5 h-5" /></button>
+                            <button onClick={onClose} className="flex-1 bg-gray-900 dark:bg-white text-white dark:text-black py-4 rounded-xl font-bold shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex justify-center items-center gap-2">Ver {resultCount} resultados</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const PlanModal = ({ plan, isOpen, onClose, showToast }) => {
+            if (!isOpen || !plan) return null;
+            const [activeTab, setActiveTab] = useState('info');
+
+            const handleBook = () => {
+                let url = plan.URL;
+                if (!url.startsWith('http')) url = 'https://' + url;
+                window.open(url, '_blank', 'noopener,noreferrer');
+            };
+
+            const handleCalendar = () => {
+                window.open(generateCalendarUrl(plan), '_blank', 'noopener,noreferrer');
+            };
+
+            const handleShare = () => {
+                const text = `¡Mira este planazo en Madrid! ${plan["Nombre Creativo"]} - ${plan.URL}`;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => showToast("Enlace copiado"));
+                } else {
+                    showToast("Enlace copiado al portapapeles"); // Fallback simple alert logic replacement
+                }
+            };
+
+            return (
+                <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center sm:p-4">
+                    <div className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity" onClick={onClose}></div>
+                    <div className="bg-white dark:bg-slate-900 w-full sm:max-w-lg h-[92vh] sm:h-auto sm:max-h-[85vh] sm:rounded-[2.5rem] rounded-t-[2.5rem] overflow-hidden shadow-2xl relative z-10 flex flex-col fade-in-up border border-white/10">
+                        <div className="relative h-72 flex-shrink-0">
+                            <SmartImage src={getPlanImage(plan, 1200)} className="w-full h-full" alt={plan["Nombre Creativo"]} fallbackCategory={plan.Categoria} textFallback={plan["Nombre Creativo"]}/>
+                            <div className="absolute top-4 left-4 z-20">
+                                <button onClick={onClose} aria-label="Cerrar detalle del plan" className="bg-black/20 hover:bg-black/40 text-white p-2.5 rounded-full backdrop-blur-md border border-white/10">
+                                    <Icons.X className="w-5 h-5" />
+                                </button>
+                            </div>
+                            <div className="absolute top-4 right-4 z-20">
+                                <button onClick={handleShare} aria-label="Copiar enlace del plan" className="bg-black/20 hover:bg-black/40 text-white p-2.5 rounded-full backdrop-blur-md border border-white/10">
+                                    <Icons.Share className="w-5 h-5" />
+                                </button>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent p-8 pt-32">
+                                <h2 className="text-3xl font-extrabold text-white leading-tight mb-1 drop-shadow-lg">{plan["Nombre Creativo"]}</h2>
+                                <p className="text-white/90 font-medium text-lg drop-shadow-md">{plan["Lugar Real"]}</p>
+                            </div>
+                        </div>
+
+                        {/* Tabs */}
+                        <div className="flex border-b border-gray-100 dark:border-slate-800 px-8 pt-4 gap-6 bg-white dark:bg-slate-900">
+                            <button onClick={() => setActiveTab('info')} className={`pb-3 font-bold text-sm transition-colors border-b-2 ${activeTab === 'info' ? 'text-pink-500 border-pink-500' : 'text-gray-400 border-transparent hover:text-gray-600'}`}>Información</button>
+                            <button onClick={() => setActiveTab('reviews')} className={`pb-3 font-bold text-sm transition-colors border-b-2 ${activeTab === 'reviews' ? 'text-pink-500 border-pink-500' : 'text-gray-400 border-transparent hover:text-gray-600'}`}>Reseñas (3)</button>
+                        </div>
+
+                        <div className="flex-grow overflow-y-auto custom-scroll p-8 space-y-8 bg-white dark:bg-slate-900">
+                            {activeTab === 'info' ? (
+                                <>
+                                    <div className="flex flex-wrap gap-3">
+                                        <span className="tag-pill bg-gray-50 dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-slate-700">📍 {plan.Barrio}</span>
+                                        <span className="tag-pill bg-green-50 text-green-700 border-green-200">💰 {plan.Precio}</span>
+                                        <span className="tag-pill bg-purple-50 text-purple-700 border-purple-200">✨ {plan.Vibe}</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2"><Icons.BookOpen className="w-5 h-5 text-gray-400" /> Sobre este lugar</h3>
+                                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">{generateDescription(plan)}</p>
+                                    </div>
+                                    
+                                    {/* Enhanced Details */}
+                                    <div className="grid grid-cols-2 gap-4">
+                                         <div className="bg-gray-50 dark:bg-slate-800 p-4 rounded-xl">
+                                             <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Dress Code</span>
+                                             <span className="text-sm font-bold text-gray-800 dark:text-white">{getDressCode(plan.Precio)}</span>
+                                         </div>
+                                         <div className="bg-gray-50 dark:bg-slate-800 p-4 rounded-xl">
+                                             <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Ambiente</span>
+                                             <span className="text-sm font-bold text-gray-800 dark:text-white">{getNoiseLevel(plan.Vibe)}</span>
+                                         </div>
+                                    </div>
+
+                                    <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-slate-800 dark:to-indigo-900/20 p-6 rounded-2xl border border-indigo-100 dark:border-slate-700 shadow-inner">
+                                        <div className="flex items-start gap-4">
+                                            <div className="p-3 bg-white dark:bg-slate-700 rounded-xl shadow-sm text-indigo-500"><Icons.Sparkles className="w-6 h-6" /></div>
+                                            <div>
+                                                <h4 className="font-bold text-indigo-900 dark:text-white text-base mb-1">Perfecto para...</h4>
+                                                <p className="text-sm text-indigo-700 dark:text-gray-300 leading-relaxed opacity-90">
+                                                    {plan.Categoria === 'Gastronomía' && 'Una cena larga con buena conversación y sobremesa.'}
+                                                    {plan.Categoria === 'Noche' && 'Cerrar el día con copas, música y ambiente animado.'}
+                                                    {plan.Categoria === 'Cultura' && 'Descubrir algo nuevo juntos (arte, espectáculos o experiencias).'}
+                                                    {plan.Categoria === 'Aire Libre' && 'Disfrutar del aire fresco, paseos y atardeceres.'}
+                                                    {!['Gastronomía','Noche','Cultura','Aire Libre'].includes(plan.Categoria) && 'Cualquier momento en el que os apetezca probar algo distinto.'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="space-y-6">
+                                    {MOCK_REVIEWS.map((review, i) => (
+                                        <div key={i} className="border-b border-gray-50 dark:border-slate-800 pb-4 last:border-0">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-xs font-bold text-pink-600">{review.avatar[0]}</div>
+                                                    <span className="font-bold text-gray-900 dark:text-white text-sm">{review.user}</span>
+                                                </div>
+                                                <span className="text-xs text-gray-400">{review.date}</span>
+                                            </div>
+                                            <div className="flex text-yellow-400 mb-2 gap-0.5">
+                                                {[...Array(5)].map((_, idx) => <Icons.Star key={idx} className={`w-3 h-3 ${idx < review.rating ? 'fill-current' : 'text-gray-200 dark:text-slate-700'}`} />)}
+                                            </div>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">{review.comment}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="p-6 border-t border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 pb-8 sm:pb-6 flex gap-3">
+                            <button onClick={handleCalendar} className="px-4 py-4 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white font-bold hover:bg-gray-200 transition-colors flex items-center justify-center">
+                                <Icons.Calendar className="w-6 h-6" />
+                            </button>
+                            <button onClick={handleBook} className="flex-1 py-4 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-black font-bold text-lg shadow-xl hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-3">
+                                Reservar Ahora <Icons.ExternalLink className="w-5 h-5"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Toast = ({ message }) => (
+            <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-[100] bg-gray-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 fade-in-up border border-white/10">
+                <Icons.CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-bold tracking-wide">{message}</span>
+            </div>
+        );
+
+        // --- NEW VIEW COMPONENTS ---
+
+        const BucketListView = ({ savedPlans, data, onOpen, onToggleFavorite, onBack, showToast }) => {
+            const [bucketFilter, setBucketFilter] = useState('Todas');
+            const savedItems = data.filter(p => savedPlans.includes(p.ID));
+            const displayedItems = bucketFilter === 'Todas' ? savedItems : savedItems.filter(p => p.Categoria === bucketFilter);
+            const handleShareList = () => {
+                if (!savedItems.length) return;
+                const lines = savedItems.map(p => `- ${p["Nombre Creativo"]} (${p.Categoria}, ${p.Barrio}) – ${p.URL}`);
+                const text = `Nuestra bucket list de The Perfect Date en Madrid:\n\n${lines.join('\n')}`;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => showToast("Lista copiada"));
+                } else {
+                    showToast("No se ha podido copiar la lista");
+                }
+            };
+            return (
+                <div className="max-w-6xl mx-auto px-4 pt-6 pb-24 fade-in">
+                    <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md">
+                        <Icons.ArrowLeft className="w-4 h-4" /> Volver
+                    </button>
+                    <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-3 flex items-center gap-3 tracking-tight">
+                        <span className="text-red-500 animate-pulse">❤️</span> Bucket List
+                        <span className="text-sm font-bold text-gray-500 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700">{savedItems.length}</span>
+                    </h2>
+                    <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl text-sm md:text-base">
+                        Guarda aquí todos los sitios que quieres probar juntos. Puedes usar esta lista como “lista de deseos”
+                        para ir tachando planes cada mes.
+                    </p>
+                    {savedItems.length === 0 ? (
+                        <div className="py-24 text-center">
+                            <div className="inline-flex p-8 rounded-full bg-red-50 dark:bg-slate-800 mb-6 shadow-sm"><Icons.Heart className="w-12 h-12 text-red-300" /></div>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Tu lista está vacía</h3>
+                            <p className="text-gray-500 max-w-xs mx-auto mb-6">Explora y guarda los planes que te enamoren para encontrarlos aquí.</p>
+                            <p className="text-xs text-gray-400 max-w-sm mx-auto">
+                                Tip: empezad guardando 5 sitios de diferentes categorías (cena, cultura, aire libre, noche y low-cost)
+                                y proponed hacer al menos uno cada mes.
+                            </p>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {['Todas', 'Gastronomía', 'Noche', 'Cultura', 'Aire Libre'].map(cat => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setBucketFilter(cat)}
+                                            className={`px-4 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
+                                                bucketFilter === cat
+                                                    ? 'bg-gray-900 text-white dark:bg-white dark:text-black border-gray-900 dark:border-white'
+                                                    : 'bg-white dark:bg-slate-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800'
+                                            }`}
+                                        >
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                                <button
+                                    onClick={handleShareList}
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-[1.02] active:scale-95 transition-all self-start md:self-auto"
+                                >
+                                    <Icons.Share className="w-4 h-4" /> Compartir lista
+                                </button>
+                            </div>
+                            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                                {displayedItems.map(plan => (<PlanCard key={plan.ID} plan={plan} onOpen={onOpen} isFavorite={true} onToggleFavorite={onToggleFavorite} viewMode="list" />))}
+                            </div>
+                            <div className="mt-10 bg-white dark:bg-slate-900 rounded-2xl p-6 border border-gray-100 dark:border-slate-800 shadow-sm">
+                                <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Cómo sacarle partido a tu Bucket List</h3>
+                                <ul className="text-xs text-gray-500 dark:text-gray-400 space-y-1.5 list-disc list-inside">
+                                    <li>Elegid al principio de la semana un plan de la lista y bloqueadlo en el calendario.</li>
+                                    <li>Después de cada cita, añadid una pequeña reseña personal o una foto.</li>
+                                    <li>Intentad probar al menos un plan por barrio nuevo cada mes.</li>
+                                </ul>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        };
+
+        const ProfileView = ({ savedCount, onBack }) => {
+            const level = savedCount > 10 ? "Experto en Citas" : savedCount > 5 ? "Romántico Avanzado" : "Explorador Novato";
+            const progress = Math.min((savedCount / 15) * 100, 100);
+            
+            return (
+                <div className="max-w-md mx-auto px-4 pt-6 fade-in pb-20">
+                    <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md">
+                        <Icons.ArrowLeft className="w-4 h-4" /> Volver
+                    </button>
+                    <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">Tu Perfil</h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                        Aquí verás cómo vas progresando como “experto en citas” y cuántos planes tenéis pendientes por vivir.
+                    </p>
+                    
+                    {/* User Card */}
+                    <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 rounded-[2.5rem] p-8 text-white shadow-2xl shadow-purple-500/20 mb-8 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                        <div className="relative z-10 flex items-center gap-5 mb-8">
+                            <div className="w-20 h-20 bg-white p-1 rounded-full shadow-lg border-4 border-white/20">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-full h-full rounded-full" alt="Avatar" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-2xl mb-1">Viajero</h3>
+                                <span className="inline-block bg-black/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10">Madrid, ES</span>
+                            </div>
+                        </div>
+                        <div className="relative z-10 bg-black/20 backdrop-blur-lg rounded-2xl p-5 border border-white/10">
+                            <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-3 opacity-90"><span>Nivel Actual</span><span>{Math.round(progress)}%</span></div>
+                            <h4 className="text-xl font-bold mb-4 flex items-center gap-2"><Icons.Crown className="w-5 h-5 text-yellow-300" /> {level}</h4>
+                            <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                                <div className="bg-white h-full rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.5)]" style={{ width: `${progress}%` }}></div>
+                            </div>
+                            <p className="text-[11px] mt-3 opacity-80 font-medium">
+                                Guarda {15 - Math.min(savedCount, 15)} planes más para desbloquear recompensas VIP.
+                            </p>
+                            <p className="text-[10px] mt-2 opacity-80">
+                                Sugerencia: mezcla siempre planes cortos (paseos, cafés) con planes especiales (conciertos, escapadas)
+                                para mantener la relación dinámica sin necesidad de grandes presupuestos.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Badges Section */}
+                    <div className="mb-8">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Insignias Desbloqueadas</h3>
+                        <div className="grid grid-cols-3 gap-3">
+                            {BADGES.map(badge => (
+                                <div key={badge.id} className={`flex flex-col items-center p-3 rounded-2xl text-center border ${badge.unlocked ? 'bg-white dark:bg-slate-800 border-gray-100 dark:border-slate-700 shadow-sm' : 'bg-gray-50 dark:bg-slate-800/50 border-transparent opacity-50 grayscale'}`}>
+                                    <span className="text-2xl mb-2">{badge.icon}</span>
+                                    <span className="text-[10px] font-bold leading-tight">{badge.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Settings Menu */}
+                    <div className="bg-white dark:bg-slate-900 rounded-[2rem] p-2 shadow-lg border border-gray-100 dark:border-slate-800">
+                        <button className="w-full py-4 flex items-center justify-between text-gray-700 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-slate-800 px-4 rounded-2xl transition-colors group">
+                            <span className="flex items-center gap-4">
+                                <div className="p-2 bg-pink-100 dark:bg-pink-900/30 rounded-lg text-pink-500"><Icons.Gift className="w-5 h-5"/></div>
+                                Mis Recompensas
+                            </span>
+                            <span className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1 transition-all">›</span>
+                        </button>
+                        <div className="h-px bg-gray-100 dark:bg-slate-800 mx-4"></div>
+                         <button className="w-full py-4 flex items-center justify-between text-gray-700 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-slate-800 px-4 rounded-2xl transition-colors group">
+                            <span className="flex items-center gap-4">
+                                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-500"><Icons.Settings className="w-5 h-5"/></div>
+                                Configuración
+                            </span>
+                            <span className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1 transition-all">›</span>
+                        </button>
+                        <div className="h-px bg-gray-100 dark:bg-slate-800 mx-4"></div>
+                        <button className="w-full py-4 flex items-center justify-between text-gray-700 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-slate-800 px-4 rounded-2xl transition-colors group">
+                            <span className="flex items-center gap-4">
+                                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-500"><Icons.MessageSquare className="w-5 h-5"/></div>
+                                Ayuda y Soporte
+                            </span>
+                            <span className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1 transition-all">›</span>
+                        </button>
+                    </div>
+
+                    <div className="mt-8 bg-white dark:bg-slate-900 rounded-[2rem] p-5 border border-gray-100 dark:border-slate-800 shadow-sm">
+                        <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">Ideas para tu próximo paso</h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                            Si no sabéis qué hacer esta semana, id a la sección de mapa, elegid un barrio nuevo y combinad un plan
+                            de día con uno de noche. Guardad ambos en favoritos desde el detalle del plan.
+                        </p>
+                        <p className="text-xs text-gray-400">
+                            Cuantos más barrios y categorías probéis, más completa será vuestra colección de recuerdos.
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+
+        const Hero = ({ filters, setFilters, neighborhoods, onGenerateClick }) => {
+            const images = ["https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1920&q=80", "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1920&q=80", "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80"];
+            const [current, setCurrent] = useState(0);
+            useEffect(() => {
+                const timer = setInterval(() => setCurrent((prev) => (prev + 1) % images.length), 6000);
+                return () => clearInterval(timer);
+            }, []);
+
+            return (
+                <div className="relative h-[400px] md:h-[550px] w-full overflow-hidden rounded-[2.5rem] mb-12 shadow-2xl group border border-white/20 dark:border-slate-800">
+                    {images.map((img, index) => (
+                        <div key={index} className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${index === current ? 'opacity-100' : 'opacity-0'}`}>
+                           <img src={img} className="w-full h-full object-cover transform scale-105 transition-transform duration-[10000ms]" style={{transform: index === current ? 'scale(1.1)' : 'scale(1.0)'}} alt="Hero" loading="lazy" decoding="async" width="auto" height="auto" />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                        </div>
+                    ))}
+                    <div className="absolute bottom-0 left-0 right-0 p-8 pb-16 flex flex-col items-center text-center z-10 fade-in">
+                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6 shadow-lg">
+                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span> Madrid Live
+                        </div>
+                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1] mb-8 drop-shadow-xl px-2">Descubre <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">Madrid</span></h2>
+                        
+                        <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full max-w-lg px-2 md:px-0">
+                            <div className="relative flex-grow group/select">
+                                <div className="absolute inset-0 bg-white/20 blur-md rounded-2xl transform group-hover/select:scale-105 transition-transform"></div>
+                                <select value={filters.neighborhood} onChange={(e) => setFilters({...filters, neighborhood: e.target.value})} className="relative w-full appearance-none bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl text-gray-900 dark:text-white font-bold py-5 px-8 rounded-2xl shadow-2xl focus:outline-none focus:ring-4 focus:ring-pink-500/30 transition-all cursor-pointer text-center text-lg border border-white/50">
+                                    <option value="Todos">📍 ¿Por dónde empezamos?</option>
+                                    {neighborhoods.filter(n => n !== 'Todos').map(hood => (<option key={hood} value={hood}>{hood}</option>))}
+                                </select>
+                            </div>
+                            <button onClick={onGenerateClick} className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-4 md:py-5 px-6 md:px-8 rounded-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 text-sm md:text-base">
+                                <Icons.Wand className="w-5 h-5 md:w-6 md:h-6" /> Generar Cita Mágica
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const NeighborhoodView = ({ neighborhoods, filters, setFilters, setCurrentView, data, onBack }) => {
+            const [selectedPin, setSelectedPin] = useState(null);
+
+            const hoodStats = useMemo(() => {
+                const stats = {};
+                data.forEach(p => {
+                    const name = p.Barrio;
+                    if (!name) return;
+                    if (!stats[name]) {
+                        stats[name] = {
+                            total: 0,
+                            Gastronomía: 0,
+                            Noche: 0,
+                            Cultura: 0,
+                            AireLibre: 0
+                        };
+                    }
+                    stats[name].total += 1;
+                    if (p.Categoria === 'Gastronomía') stats[name].Gastronomía += 1;
+                    if (p.Categoria === 'Noche') stats[name].Noche += 1;
+                    if (p.Categoria === 'Cultura') stats[name].Cultura += 1;
+                    if (p.Categoria === 'Aire Libre') stats[name].AireLibre += 1;
+                });
+                return stats;
+            }, [data]);
+
+            const selectedPlans = useMemo(() => {
+                if (!selectedPin) return [];
+                return data.filter(p => p.Barrio === selectedPin);
+            }, [selectedPin, data]);
+
+            return (
+                <div className="max-w-6xl mx-auto px-4 pt-6 fade-in pb-32">
+                    <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-md">
+                        <Icons.ArrowLeft className="w-4 h-4" /> Volver
+                    </button>
+                    <div className="mb-8">
+                        <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">Mapa de Madrid</h2>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 max-w-2xl">
+                            Explora los barrios más interesantes de la ciudad y descubre qué tipo de plan encaja mejor con
+                            vuestra energía de hoy: cañas en La Latina, terrazas en Salamanca o conciertos en Malasaña.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8 h-full mb-12">
+                        <div className="map-container shadow-2xl border-4 border-white dark:border-slate-800 relative group overflow-hidden bg-amber-50 dark:bg-slate-900">
+                            <svg viewBox="0 0 800 600" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+                                <rect width="800" height="600" className="fill-amber-50 dark:fill-slate-900" />
+                                {/* Abstract River Manzanares */}
+                                <path d="M150,0 Q180,200 100,300 T150,600" className="fill-none stroke-blue-200 dark:stroke-blue-900/40" strokeWidth="20" opacity="0.5" strokeLinecap="round" />
+                                {/* M30 Ring (Abstract) */}
+                                <path d="M200,100 Q650,50 700,300 T400,580 T100,300" className="fill-none stroke-gray-200 dark:stroke-slate-700" strokeWidth="4" strokeDasharray="10,8" opacity="0.7" />
+                                {/* Parks (Retiro & Casa de Campo) */}
+                                <path d="M580,320 L680,320 L680,450 L580,450 Z" className="fill-green-100 dark:fill-green-900/20" opacity="0.6" /> 
+                                <path d="M0,200 Q80,250 50,400 L0,400 Z" className="fill-green-100 dark:fill-green-900/20" opacity="0.4" />
+                                {/* Districts (Abstract Shapes) */}
+                                <path d="M350,300 L450,300 L450,380 L350,380 Z" className="fill-gray-100 dark:fill-slate-800/30" opacity="0.3" />
+                                <path d="M500,150 L700,150 L700,300 L500,300 Z" className="fill-gray-100 dark:fill-slate-800/20" opacity="0.2" />
+                                <path d="M350,150 L480,150 L480,280 L350,280 Z" className="fill-gray-100 dark:fill-slate-800/20" opacity="0.2" />
+                                {/* Main Streets (Castellana) */}
+                                <line x1="480" y1="50" x2="480" y2="550" className="stroke-white dark:stroke-slate-800" strokeWidth="8" opacity="0.8" />
+                                <line x1="300" y1="340" x2="700" y2="340" className="stroke-white dark:stroke-slate-800" strokeWidth="6" opacity="0.8" />
+                            </svg>
+                            {Object.entries(MAP_POSITIONS).map(([name, pos], index) => {
+                                const count = hoodStats[name]?.total || 0;
+                                const heatShadow =
+                                    count > 20 ? 'shadow-pink-500/70' :
+                                    count > 10 ? 'shadow-pink-400/50' :
+                                    'shadow-slate-900/40';
+                                return (
+                                    <button
+                                        key={name}
+                                        style={{ top: pos.top, left: pos.left, animationDelay: `${index * 0.05}s` }}
+                                        onClick={() => setSelectedPin(selectedPin === name ? null : name)}
+                                        className={`map-pin group/pin flex flex-col items-center map-pin-animate opacity-0 ${selectedPin === name ? 'z-50 selected' : 'z-10'}`}
+                                    >
+                                        <div className={`relative w-9 h-9 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${heatShadow} ${selectedPin === name ? 'bg-gray-900 text-white scale-125' : 'bg-white text-pink-500 hover:bg-pink-500 hover:text-white hover:scale-110'}`}>
+                                            <Icons.MapPin className="w-4 h-4" />
+                                            {selectedPin === name && <div className="pulse-ring"></div>}
+                                            {count > 0 && (
+                                                <span className="absolute -bottom-1 -right-1 min-w-[16px] h-[16px] rounded-full bg-pink-500 text-white text-[9px] font-bold flex items-center justify-center shadow-md">
+                                                    {count > 99 ? '99+' : count}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <span className={`mt-2 text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-lg backdrop-blur-md transition-all whitespace-nowrap border ${selectedPin === name ? 'bg-gray-900 text-white border-gray-900 translate-y-1' : 'bg-white/90 text-gray-800 border-white/50 opacity-0 group-hover/pin:opacity-100 translate-y-2 group-hover/pin:translate-y-0'}`}>{name}</span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                        <div className="flex flex-col h-[500px] md:h-auto">
+                            {selectedPin ? (
+                                <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-xl h-full border border-gray-100 dark:border-slate-800 flex flex-col scale-in relative">
+                                <button onClick={() => setSelectedPin(null)} aria-label="Cerrar detalle del barrio" className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-400 hover:text-gray-600 transition-colors"><Icons.X className="w-5 h-5" /></button>
+                                    <div className="mb-6 pr-8">
+                                        <span className="text-pink-500 text-xs font-bold uppercase tracking-wider mb-1 block">Barrio Seleccionado</span>
+                                        <h3 className="text-3xl font-black text-gray-900 dark:text-white mb-1">{selectedPin}</h3>
+                                        <p className="text-sm text-gray-500 font-medium">{selectedPlans.length} experiencias disponibles</p>
+                                        {hoodStats[selectedPin] && (
+                                            <div className="flex flex-wrap gap-2 mt-3">
+                                                {[
+                                                    { key: 'Gastronomía', label: 'Gastro' },
+                                                    { key: 'Noche', label: 'Noche' },
+                                                    { key: 'Cultura', label: 'Cultura' },
+                                                    { key: 'AireLibre', label: 'Aire libre' }
+                                                ].map(cat => {
+                                                    const count = hoodStats[selectedPin][cat.key];
+                                                    if (!count) return null;
+                                                    return (
+                                                        <button
+                                                            key={cat.key}
+                                                            onClick={() => {
+                                                                setFilters({ ...filters, neighborhood: selectedPin, category: cat.key === 'AireLibre' ? 'Aire Libre' : cat.key });
+                                                                setCurrentView('home');
+                                                            }}
+                                                            className="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-slate-800 text-[10px] font-bold text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
+                                                        >
+                                                            {cat.label} · {count}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="flex-grow overflow-y-auto custom-scroll space-y-4 pr-2 mb-6">
+                                        {selectedPlans.slice(0, 5).map(plan => (
+                                            <div key={plan.ID} onClick={() => { setFilters({...filters, neighborhood: selectedPin}); setCurrentView('home'); }} className="flex gap-4 items-center p-3 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-2xl transition-all cursor-pointer border border-transparent hover:border-gray-200 group">
+                                                <SmartImage src={getPlanImage(plan, 200)} className="w-16 h-16 rounded-xl object-cover shadow-sm" alt={plan["Nombre Creativo"]} fallbackCategory={plan.Categoria} textFallback={plan["Nombre Creativo"]}/>
+                                                <div className="min-w-0">
+                                                    <h4 className="font-bold text-sm text-gray-900 dark:text-white truncate group-hover:text-pink-600 transition-colors">{plan["Nombre Creativo"]}</h4>
+                                                    <span className="text-xs text-gray-500 font-medium">{plan.Categoria} • {plan.Precio}</span>
+                                                </div>
+                                                <Icons.ArrowLeft className="w-4 h-4 text-gray-300 ml-auto rotate-180 group-hover:translate-x-1 transition-transform" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <button onClick={() => { setFilters({...filters, neighborhood: selectedPin}); setCurrentView('home'); }} className="w-full py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold text-sm transition-all hover:scale-[1.02] shadow-lg">Explorar todo en {selectedPin}</button>
+                                </div>
+                            ) : (
+                                <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 h-full flex flex-col items-center justify-center text-center border border-gray-100 dark:border-slate-800 shadow-lg">
+                                    <div className="w-20 h-20 bg-gray-50 dark:bg-slate-800 rounded-full flex items-center justify-center mb-6 shadow-inner"><Icons.MapPin className="w-10 h-10 text-gray-300" /></div>
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Selecciona una zona</h3>
+                                    <p className="text-gray-500 max-w-xs leading-relaxed">Toca los marcadores en el mapa interactivo para descubrir las joyas ocultas de cada barrio.</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    {/* NEW TRENDING SECTION */}
+                    <div className="mb-8">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Barrios en Tendencia</h3>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                            Un vistazo rápido a las zonas que más planes concentran ahora mismo.
+                        </p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {TRENDING_HOODS.map(hood => (
+                                <div key={hood.name} onClick={() => { setFilters({...filters, neighborhood: hood.name}); setCurrentView('home'); }} className="relative h-32 rounded-2xl overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-all">
+                                    <SmartImage src={hood.image} className="w-full h-full transform group-hover:scale-110 transition-transform duration-700" alt={hood.name} textFallback={hood.name} />
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex flex-col justify-end p-4">
+                                        <span className="text-[10px] font-bold text-white bg-pink-500 px-2 py-0.5 rounded w-max mb-1">{hood.tag}</span>
+                                        <h4 className="text-white font-bold text-lg leading-none">{hood.name}</h4>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                            Estos barrios cambian mucho según la hora del día: prueba a filtrar por “Atardecer” o “Noche” en la página
+                            principal después de elegir uno.
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const HowItWorks = () => (
+            <section className="mb-12">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">¿Cómo usar The Perfect Date?</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 max-w-2xl">
+                        Piensa en la app como tu asistente personal de citas: explora, guarda y combina planes para crear noches
+                        perfectas sin esfuerzo.
+                    </p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-3">
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm flex flex-col gap-2">
+                        <span className="text-xs font-bold uppercase tracking-widest text-pink-500">1 · Explora</span>
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white">Filtra por barrio, ambiente y precio</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Usa la barra de búsqueda, los filtros y el mapa para descubrir rincones nuevos según vuestro mood.
+                        </p>
+                    </div>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm flex flex-col gap-2">
+                        <span className="text-xs font-bold uppercase tracking-widest text-purple-500">2 · Guarda</span>
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white">Crea vuestra bucket list</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Marca con el corazón los sitios que os llamen la atención y tenlos siempre a mano en la sección de favoritos.
+                        </p>
+                    </div>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-gray-100 dark:border-slate-800 shadow-sm flex flex-col gap-2">
+                        <span className="text-xs font-bold uppercase tracking-widest text-indigo-500">3 · Planifica</span>
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white">Reserva y añade al calendario</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Desde el detalle de cada plan puedes abrir la web oficial, reservar y crear un evento en tu calendario.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const FaqSection = () => (
+            <section className="mb-16">
+                <div className="mb-4">
+                    <h3 className="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">Preguntas rápidas</h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xl">
+                        Respuestas cortas a las dudas más típicas sobre cómo usar la app.
+                    </p>
+                </div>
+                <div className="grid gap-3 md:grid-cols-2">
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-100 dark:border-slate-800 shadow-sm">
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">¿Dónde se guardan mis favoritos?</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Tus planes guardados viven en tu navegador (localStorage). Nadie más puede verlos ni acceder a ellos desde otro dispositivo.
+                        </p>
+                    </div>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-100 dark:border-slate-800 shadow-sm">
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">¿Puedo reservar desde la app?</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Sí. Desde el detalle de cada plan, el botón “Reservar ahora” te lleva a la web oficial del lugar para que finalices la reserva allí.
+                        </p>
+                    </div>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-100 dark:border-slate-800 shadow-sm">
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">¿Cómo funciona el generador mágico?</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Elige un mood (romántico, divertido, relax o exclusivo) y te proponemos combinación de actividad + cena + copas
+                            basada en los datos del directorio.
+                        </p>
+                    </div>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-100 dark:border-slate-800 shadow-sm">
+                        <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1">¿Y si no conozco bien Madrid?</h4>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            Empieza por el mapa de barrios y las colecciones destacadas. Guarda lo que te guste y deja que la app te sorprenda
+                            con el botón de dado.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
+
+        // --- 5. MAIN APP ---
+
+        const App = () => {
+            const [data, setData] = useState([]);
+            const [filters, setFilters] = useState({ category: 'Todas', vibe: 'Todos', neighborhood: 'Todos', price: 'Todos', tag: 'Todos' });
+            const [searchTerm, setSearchTerm] = useState('');
+            const [viewMode, setViewMode] = useState('grid');
+            const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+            const [showGenerator, setShowGenerator] = useState(false);
+            const [selectedPlan, setSelectedPlan] = useState(null);
+            const [selectedBlogPost, setSelectedBlogPost] = useState(null);
+            const [savedPlans, setSavedPlans] = useState([]);
+            const [toast, setToast] = useState(null);
+            const [currentView, setCurrentView] = useState('home'); 
+            const [showOnboarding, setShowOnboarding] = useState(false);
+            const [darkMode, setDarkMode] = useState(false);
+            
+            useEffect(() => {
+                const lines = rawCSV.trim().split('\n');
+                const headers = lines[0].split(',');
+                const parsed = lines.slice(1).map((line, idx) => {
+                    const values = line.split(',');
+                    const entry = {};
+                    headers.forEach((h, i) => entry[h.trim()] = values[i]?.trim());
+                    entry.Rating = (4.0 + (idx % 10)/10).toFixed(1);
+                    
+                    const tags = [];
+                    const text = (entry["Nombre Creativo"] + " " + entry["Lugar Real"] + " " + entry.Categoria).toLowerCase();
+                    if (text.includes('sushi') || text.includes('japon')) tags.push('Japonés');
+                    if (text.includes('pizza') || text.includes('pasta')) tags.push('Italiano');
+                    if (text.includes('taco') || text.includes('mexicano')) tags.push('Mexicano');
+                    if (text.includes('terraza')) tags.push('Vistas');
+                    if (text.includes('cafe')) tags.push('Brunch');
+                    entry.tags = tags;
+                    return entry;
+                });
+                setData(parsed);
+                
+                const saved = localStorage.getItem('favorites');
+                if(saved) setSavedPlans(JSON.parse(saved));
+
+                // Check for first visit
+                const visited = localStorage.getItem('hasVisited');
+                if (!visited) {
+                    setShowOnboarding(true);
+                    localStorage.setItem('hasVisited', 'true');
+                }
+
+                // Load theme preference if exists
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme === 'dark') {
+                    setDarkMode(true);
+                } else if (storedTheme === 'light') {
+                    setDarkMode(false);
+                } else {
+                    // Fallback to system dark mode
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        setDarkMode(true);
+                    }
+                }
+            }, []);
+
+            useEffect(() => { window.scrollTo(0, 0); }, [currentView]);
+
+            // Toggle Dark Mode Class on Body & persist preference
+            useEffect(() => {
+                if (darkMode) {
+                    document.body.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            }, [darkMode]);
+
+            const showToastMsg = (msg) => { setToast(msg); setTimeout(() => setToast(null), 3000); }
+
+            const toggleFavorite = (id) => {
+                const isAdding = !savedPlans.includes(id);
+                const newSaved = isAdding ? [...savedPlans, id] : savedPlans.filter(i => i !== id);
+                setSavedPlans(newSaved);
+                localStorage.setItem('favorites', JSON.stringify(newSaved));
+                if (isAdding) {
+                    showToastMsg("Añadido a favoritos");
+                    confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 }, colors: ['#ec4899', '#8b5cf6'] });
+                }
+            };
+
+            const toggleMultipleFavorites = (ids) => {
+                const newIds = ids.filter(id => !savedPlans.includes(id));
+                if (newIds.length > 0) {
+                     const newSaved = [...savedPlans, ...newIds];
+                     setSavedPlans(newSaved);
+                     localStorage.setItem('favorites', JSON.stringify(newSaved));
+                     showToastMsg(`¡${newIds.length} planes guardados!`);
+                } else {
+                    showToastMsg("Ya tenías estos planes guardados");
+                }
+            }
+
+            const neighborhoods = useMemo(() => ['Todos', ...Array.from(new Set(data.map(p => p.Barrio))).sort()], [data]);
+            const allTags = useMemo(() => Array.from(new Set(data.flatMap(p => p.tags || []))).sort(), [data]);
+
+            const filteredData = useMemo(() => {
+                return data.filter(p => {
+                    if (filters.category !== 'Todas' && p.Categoria !== filters.category) return false;
+                    if (filters.vibe !== 'Todos') {
+                        const mappedVibes = VIBE_GROUPS[filters.vibe] || [filters.vibe];
+                        if (!mappedVibes.includes(p.Vibe) && !p.Vibe.includes(filters.vibe)) return false;
+                    }
+                    if (filters.neighborhood !== 'Todos' && p.Barrio !== filters.neighborhood) return false;
+                    if (filters.price !== 'Todos' && p.Precio !== filters.price) return false;
+                    if (filters.tag !== 'Todos' && (!p.tags || !p.tags.includes(filters.tag))) return false;
+                    if (searchTerm && !p["Nombre Creativo"].toLowerCase().includes(searchTerm.toLowerCase()) && !p["Lugar Real"].toLowerCase().includes(searchTerm.toLowerCase())) return false;
+                    return true;
+                });
+            }, [data, filters, searchTerm]);
+
+            const hasActiveFilters = useMemo(() => {
+                return (
+                    filters.category !== 'Todas' ||
+                    filters.vibe !== 'Todos' ||
+                    filters.neighborhood !== 'Todos' ||
+                    filters.price !== 'Todos' ||
+                    filters.tag !== 'Todos' ||
+                    !!searchTerm
+                );
+            }, [filters, searchTerm]);
+
+            const collections = useMemo(() => {
+                return {
+                    newArrivals: [...data].filter(p => parseInt(p.ID) > 100).slice(0, 10),
+                    topRated: [...data].sort((a,b) => b.Rating - a.Rating).slice(0, 8),
+                    budgetFriendly: data.filter(p => p.Precio === '€' || p.Precio === '€€').slice(0, 8)
+                };
+            }, [data]);
+
+            const handleSurpriseMe = () => {
+                const random = data[Math.floor(Math.random() * data.length)];
+                setSelectedPlan(random);
+                confetti();
+            };
+
+            const getCategoryIcon = (cat) => {
+                switch(cat) {
+                    case 'Gastronomía': return <Icons.Pizza className="w-4 h-4" />;
+                    case 'Noche': return <Icons.Wine className="w-4 h-4" />;
+                    case 'Cultura': return <Icons.Palette className="w-4 h-4" />;
+                    case 'Aire Libre': return <Icons.TreePine className="w-4 h-4" />;
+                    default: return <Icons.Star className="w-4 h-4" />;
+                }
+            }
+
+            return (
+                <div className="min-h-screen pb-32">
+                    {toast && <Toast message={toast} />}
+                    {showOnboarding && <OnboardingModal onClose={() => setShowOnboarding(false)} />}
+                    <DateGeneratorModal isOpen={showGenerator} onClose={() => setShowGenerator(false)} data={data} onSave={toggleMultipleFavorites}/>
+                    
+                    {currentView === 'home' && (
+                        <div className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-gray-100 dark:border-slate-800 transition-all">
+                            <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                                <h1 className="text-2xl font-black tracking-tighter flex items-center gap-2">
+                                    <Icons.Heart className="w-6 h-6 text-pink-500 fill-pink-500" /> 
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">The Perfect Date</span>
+                                </h1>
+                                <div className="flex gap-3 items-center">
+                                    <WeatherWidget />
+                                    <button
+                                        onClick={() => setDarkMode(!darkMode)}
+                                        aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+                                        className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-gray-600 dark:text-gray-300"
+                                    >
+                                        {darkMode ? <Icons.Sun className="w-5 h-5" /> : <Icons.Moon className="w-5 h-5" />}
+                                    </button>
+                                    <div className="h-6 w-px bg-gray-200 dark:bg-slate-700 mx-1"></div>
+                                    <button
+                                        onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                                        aria-label={viewMode === 'grid' ? "Ver en lista" : "Ver en cuadrícula"}
+                                        className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-gray-600 dark:text-gray-300"
+                                    >
+                                        {viewMode === 'grid' ? <Icons.List className="w-5 h-5" /> : <Icons.Grid className="w-5 h-5" />}
+                                    </button>
+                                    <div onClick={() => setCurrentView('profile')} className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 p-[2px] cursor-pointer hover:scale-105 transition-transform shadow-md">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="rounded-full bg-white" alt="User" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-4 pb-4 max-w-6xl mx-auto">
+                                <div className="flex gap-3 mb-5">
+                                    <div className="relative flex-grow group">
+                                        <Icons.Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-pink-500 transition-colors" />
+                                        <input type="text" placeholder="Buscar experiencias, lugares..." className="w-full bg-gray-100/50 dark:bg-slate-800/50 rounded-2xl pl-14 pr-4 py-4 text-sm font-bold focus:bg-white dark:focus:bg-slate-800 shadow-inner focus:shadow-xl focus:ring-2 focus:ring-pink-500/20 outline-none transition-all placeholder-gray-400" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                                    </div>
+                                    <button
+                                        onClick={() => setShowFilterDrawer(true)}
+                                        aria-label="Abrir filtros"
+                                        className="bg-gray-900 dark:bg-white text-white dark:text-black px-6 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                                    >
+                                        <Icons.Filter className="w-5 h-5" />
+                                    </button>
+                                </div>
+                                <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+                                    {['Todas', 'Gastronomía', 'Noche', 'Cultura', 'Aire Libre'].map(cat => (
+                                        <button key={cat} onClick={() => setFilters({...filters, category: cat})} className={`whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold transition-all border shadow-sm ${filters.category === cat ? 'bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-black scale-105' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 dark:bg-slate-800 dark:text-gray-300 dark:border-slate-700'}`}>
+                                            {getCategoryIcon(cat)} {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    <main className={currentView === 'home' ? "max-w-6xl mx-auto px-4 pt-8" : ""}>
+                        {currentView === 'home' && (
+                            <div className="fade-in">
+                                {!searchTerm && filters.category === 'Todas' && filters.vibe === 'Todos' && filters.tag === 'Todos' && filters.neighborhood === 'Todos' && (
+                                    <>
+                                        <Hero filters={filters} setFilters={setFilters} neighborhoods={neighborhoods} onGenerateClick={() => setShowGenerator(true)}/>
+                                        <HorizontalCollection title="✨ Novedades" items={collections.newArrivals} onOpen={setSelectedPlan} />
+                                        <HorizontalCollection title="🔥 Top Valorados" items={collections.topRated} onOpen={setSelectedPlan} />
+                                        <HorizontalCollection title="💸 Citas Económicas" items={collections.budgetFriendly} onOpen={setSelectedPlan} />
+                                        <HowItWorks />
+                                        <FaqSection />
+                                    </>
+                                )}
+                                <div className="mt-8 mb-8 flex items-center justify-between gap-3">
+                                    <h2 className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-3 tracking-tight">
+                                        {searchTerm || filters.category !== 'Todas' ? 'Resultados' : 'Explorar todo'}
+                                        <span className="ml-auto text-xs font-bold text-gray-500 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700">
+                                            {filteredData.length}
+                                        </span>
+                                    </h2>
+                                    {hasActiveFilters && (
+                                        <span className="text-[11px] font-bold text-pink-600 dark:text-pink-300 bg-pink-50 dark:bg-pink-900/20 px-3 py-1 rounded-full border border-pink-100 dark:border-pink-900/30">
+                                            Filtros activos
+                                        </span>
+                                    )}
+                                </div>
+                                {filteredData.length > 0 ? (
+                                    <div className={`grid gap-4 sm:gap-6 ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'}`}>
+                                        {filteredData.map(plan => (<PlanCard key={plan.ID} plan={plan} onOpen={setSelectedPlan} isFavorite={savedPlans.includes(plan.ID)} onToggleFavorite={toggleFavorite} viewMode={viewMode}/>))}
+                                    </div>
+                                ) : (
+                                    <div className="py-24 text-center">
+                                        <div className="inline-block p-8 rounded-full bg-gray-50 dark:bg-slate-800 mb-6 shadow-inner"><Icons.Search className="w-12 h-12 text-gray-300" /></div>
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No encontramos nada</h3>
+                                        <p className="text-gray-500 max-w-xs mx-auto mb-6">Parece que no hay planes con esos filtros.</p>
+                                        <button onClick={() => {setFilters({category:'Todas',vibe:'Todos',neighborhood:'Todos',price:'Todos', tag: 'Todos'}); setSearchTerm('');}} className="px-6 py-3 bg-pink-50 text-pink-600 rounded-xl font-bold text-sm hover:bg-pink-100 transition-colors">Limpiar filtros</button>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                        {currentView === 'saved' && <BucketListView savedPlans={savedPlans} data={data} onOpen={setSelectedPlan} onToggleFavorite={toggleFavorite} onBack={() => setCurrentView('home')} showToast={showToastMsg}/>}
+                        {currentView === 'hoods' && <NeighborhoodView neighborhoods={neighborhoods} filters={filters} setFilters={setFilters} setCurrentView={setCurrentView} data={data} onBack={() => setCurrentView('home')}/>}
+                        {currentView === 'blog' && !selectedBlogPost && <BlogView onSelectPost={setSelectedBlogPost} onBack={() => setCurrentView('home')}/>}
+                        {currentView === 'blog' && selectedBlogPost && <BlogPostView post={selectedBlogPost} onBack={() => setSelectedBlogPost(null)}/>}
+                        {currentView === 'shop' && <ShopView onBack={() => setCurrentView('home')} showToast={showToastMsg}/>}
+                        {currentView === 'profile' && <ProfileView savedCount={savedPlans.length} onBack={() => setCurrentView('home')}/>}
+                    </main>
+
+                    {currentView === 'home' && (
+                        <button
+                            onClick={handleSurpriseMe}
+                            aria-label="Sugerir un plan al azar"
+                            className="fixed bottom-28 right-6 z-30 bg-gray-900 dark:bg-white text-white dark:text-black p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:rotate-12 group border border-white/10"
+                        >
+                            <Icons.Dice className="w-6 h-6 group-hover:animate-spin" />
+                        </button>
+                    )}
+
+                    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-[90%] max-w-lg z-40">
+                        <nav className="floating-nav rounded-t-3xl md:rounded-2xl px-2 py-3 md:py-2 flex justify-between items-center gap-1 md:gap-2" aria-label="Navegación principal">
+                            <button
+                                onClick={() => setCurrentView('home')}
+                                aria-label="Inicio"
+                                className={`p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'home' ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.Sparkles className="w-6 h-6" />
+                            </button>
+                            <button
+                                onClick={() => setCurrentView('saved')}
+                                aria-label="Favoritos"
+                                className={`relative p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'saved' ? 'bg-red-50 dark:bg-red-900/20 text-red-500' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.Heart className="w-6 h-6" />
+                                {savedPlans.length > 0 && (
+                                    <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center shadow-md">
+                                        {savedPlans.length > 9 ? '9+' : savedPlans.length}
+                                    </span>
+                                )}
+                            </button>
+                            <button
+                                onClick={() => setCurrentView('hoods')}
+                                aria-label="Mapa de barrios"
+                                className={`p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'hoods' ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.MapPin className="w-6 h-6" />
+                            </button>
+                            <button
+                                onClick={() => setCurrentView('blog')}
+                                aria-label="Blog"
+                                className={`p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'blog' ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.BookOpen className="w-6 h-6" />
+                            </button>
+                            <button
+                                onClick={() => setCurrentView('shop')}
+                                aria-label="Tienda"
+                                className={`p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'shop' ? 'bg-pink-50 dark:bg-pink-900/20 text-pink-500' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.ShoppingBag className="w-6 h-6" />
+                            </button>
+                            <button
+                                onClick={() => setCurrentView('profile')}
+                                aria-label="Perfil"
+                                className={`p-4 md:p-3 rounded-xl flex flex-col items-center gap-1 transition-all min-h-[44px] min-w-[44px] ${currentView === 'profile' ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white' : 'text-gray-400 hover:text-gray-600'}`}
+                            >
+                                <Icons.User className="w-6 h-6" />
+                            </button>
+                        </nav>
+                    </div>
+
+                    <FilterDrawer isOpen={showFilterDrawer} onClose={() => setShowFilterDrawer(false)} filters={filters} setFilters={setFilters} neighborhoods={neighborhoods} allTags={allTags} resultCount={filteredData.length} />
+                    <PlanModal plan={selectedPlan} isOpen={!!selectedPlan} onClose={() => setSelectedPlan(null)} showToast={showToastMsg} />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
