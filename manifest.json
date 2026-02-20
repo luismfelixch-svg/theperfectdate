@@ -1,40 +1,59 @@
 {
-  "background_color": "#ffffff",
-  "description": "Descubre y guarda los mejores planes románticos y divertidos en Madrid: restaurantes, terrazas, cultura, noche y aire libre en un solo directorio premium.",
-  "dir": "ltr",
-  "display": "standalone",
   "name": "The Perfect Date",
-  "orientation": "any",
-  "scope": "/",
   "short_name": "TPD",
+  "description": "Descubre y guarda los mejores planes románticos y divertidos en Madrid: restaurantes, terrazas, cultura, noche y aire libre en un solo directorio premium.",
+  "lang": "es",
   "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "any",
   "theme_color": "#0f172a",
+  "background_color": "#ffffff",
   "icons": [
     {
-      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&amp;fit=crop&amp;w=64&amp;q=80",
-      "type": "image/jpeg",
-      "sizes": "64x43",
-      "isSquare": false,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": true,
-      "width": 64,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80",
-      "type": "image/jpeg",
-      "sizes": "1200x800",
-      "isSquare": false,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": true,
-      "width": 1200,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Descubre planes románticos y divertidos"
+    },
+    {
+      "src": "/screenshots/screenshot2.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Guarda tus lugares favoritos"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mis Favoritos",
+      "short_name": "Favoritos",
+      "description": "Ver los planes que has guardado",
+      "url": "/favoritos",
+      "icons": [{ "src": "/icons/shortcut-favorites.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Buscar Planes",
+      "short_name": "Buscar",
+      "description": "Encuentra nuevos planes en Madrid",
+      "url": "/buscar",
+      "icons": [{ "src": "/icons/shortcut-search.png", "sizes": "96x96" }]
     }
   ]
 }
