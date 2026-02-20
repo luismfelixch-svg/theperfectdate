@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Perfect Date - Directorio Premium de planes en Madrid</title>
     <meta name="description" content="Descubre y guarda los mejores planes románticos y divertidos en Madrid: restaurantes, terrazas, cultura, noche y aire libre en un solo directorio premium.">
-    <link rel="canonical" href="https://the-perfect-date.example.com/">
+    <!-- TODO: Reemplaza 'example.com' con tu dominio real antes de publicar -->
+    <link rel="canonical" href="https://the-perfect-date.example.com/"> 
     <meta name="theme-color" content="#0f172a">
 
     <!-- PWA Manifest & Icons -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
@@ -48,7 +49,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" href="icons/icon-192x192.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
@@ -168,7 +169,7 @@
         // PWA Service Worker Registration
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/pwabuilder-sw.js")
+                navigator.serviceWorker.register("pwabuilder-sw.js")
                     .then(reg => console.log("Service worker registered.", reg))
                     .catch(err => console.log("Service worker registration failed: ", err));
             });
